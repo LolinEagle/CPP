@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 15:22:52 by frrusso           #+#    #+#             */
-/*   Updated: 2022/07/07 15:22:55 by frrusso          ###   ########.fr       */
+/*   Created: 2022/07/07 15:22:27 by frrusso           #+#    #+#             */
+/*   Updated: 2022/07/07 15:22:34 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#ifndef CONTACT_H
+# define CONTACT_H
 
-int main()
+#include <iostream>
+#include <iomanip>
+
+class Contact
 {
-	PhoneBook	book;
-	std::string	line;
+	private:
 
-	while (1)
-	{
-		std::cout << "PhoneBook> ";
-		getline(std::cin, line);
-		if (line.compare("ADD") == 0)
-		{
-			std::cout << line << std::endl;
-		}
-		else if (line.compare("SEARCH") == 0)
-		{
-			std::cout << line << std::endl;
-		}
-		else if (line.compare("EXIT") == 0)
-			break;
-	}
-	return (0);
+	public:
+		std::string	first;
+		std::string	last;
+		std::string	nick;
+		std::string	phone;
+		std::string	secret;
+		Contact();
+		~Contact();
+};
+
+Contact::Contact()
+{
 }
+
+Contact::~Contact()
+{
+}
+
+#endif

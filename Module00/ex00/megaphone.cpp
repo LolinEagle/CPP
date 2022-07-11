@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	for(i = 1; i < ac; i++)
+	for (i = 1; i < ac; i++)
 	{
 		j = 0;
 		while (av[i][j])

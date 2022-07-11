@@ -13,37 +13,28 @@
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-// ◦ Contient un tableau de contacts.
-// ◦ Peut enregistrer 8 contacts maximum. Si l’utilisateur tente d’ajouter un 9ème
-// contact, remplacez le plus ancien par celui-ci.
-// ◦ Notez que l’allocation dynamique est interdite.
+# include "Contact.hpp"
 
 class PhoneBook
 {
-private:
-	/* data */
-public:
-	int	i;
-	int	tab[8];
-	PhoneBook(/* args */);
-	~PhoneBook();
+	private:
+		int		i;
+		Contact	tab[8];
+	public:
+		void	set_contact(std::string line, int n);
+		void	next_contact();
+		void	print_all();
+		PhoneBook();
+		~PhoneBook();
 };
 
-PhoneBook::PhoneBook(/* args */)
+PhoneBook::PhoneBook()
 {
-	int	i = 0;
-
 	this->i = 0;
-	while (i < 8)
-	{
-		this->tab[i] = 0;
-		i++;
-	}
 }
 
 PhoneBook::~PhoneBook()
 {
 }
-
 
 #endif

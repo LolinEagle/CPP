@@ -10,15 +10,17 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC		=	c++
-RM		=	rm -f
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
 NAME	=	phonebook
-SRCS	=	main.cpp
+SRCS	=	${addprefix srcs/, main.cpp PhoneBook.cpp}
 OBJS	=	${SRCS:.cpp=.o}
+DEPS	=	$(SRCS:.cpp=.d)
+CC		=	c++
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
+INC		=	-I ./incs
+RM		=	rm -f
 
-.c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+.cpp.o:
+	${CC} ${FLAGS} -c $< -o $@ ${INC}
 
 ${NAME}:${OBJS}
 	${CC} ${FLAGS} ${OBJS} -o ${NAME}
@@ -32,5 +34,8 @@ fclean:clean
 	${RM} ${NAME}
 
 re:fclean all
+
+run:${NAME}
+	./${NAME}
 
 .PHONY: all clean fclean re
