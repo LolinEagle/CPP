@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "PhoneBook.hpp"
+#include "PhoneBook.hpp"
 
 void	set_contact(const char *str, PhoneBook *book, int n)
 {
@@ -21,7 +21,7 @@ void	set_contact(const char *str, PhoneBook *book, int n)
 		std::cout << str;
 		getline(std::cin, line);
 	}
-	while (line.compare("") == 0);
+	while (line.empty());
 	(*book).set_contact(line, n);
 }
 

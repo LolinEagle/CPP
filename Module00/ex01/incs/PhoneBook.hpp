@@ -25,16 +25,6 @@ class PhoneBook
 		void	next_contact();
 		void	print_all();
 		PhoneBook();
-		~PhoneBook();
 };
-
-PhoneBook::PhoneBook()
-{
-	this->i = 0;
-}
-
-PhoneBook::~PhoneBook()
-{
-}
 
 #endif

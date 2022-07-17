@@ -10,7 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "PhoneBook.hpp"
+#include "PhoneBook.hpp"
+
+PhoneBook::PhoneBook()
+{
+	this->i = 0;
+}
 
 void	PhoneBook::set_contact(std::string line, int n)
 {
@@ -35,21 +40,26 @@ void	PhoneBook::next_contact()
 
 void	PhoneBook::print_all()
 {
-	int	i = 0;
+	int			i = 0;
+	std::string	str;
 
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	while (i < 8)
 	{
-		std::cout << "|" << std::setw(10) << i << "|" << std::setw(10);
-		std::cout.width(10);
-		std::cout << this->tab[i].first;
-		std::cout << "|" << std::setw(10);
-		std::cout.width(10);
-		std::cout << this->tab[i].last;
-		std::cout << "|" << std::setw(10);
-		std::cout.width(10);
-		std::cout << this->tab[i].nick;
-		std::cout << "|" << std::endl;
+		std::cout << "|" << std::setw(10) << i << "|";
+		if (this->tab[i].first.size() <= 10)
+			std::cout << std::setw(10) << this->tab[i].first << "|";
+		else
+			std::cout << std::setw(9) << this->tab[i].first.substr(0, 9) << ".|";
+		if (this->tab[i].last.size() <= 10)
+			std::cout << std::setw(10) << this->tab[i].last << "|";
+		else
+			std::cout << std::setw(9) << this->tab[i].last.substr(0, 9) << ".|";
+		if (this->tab[i].nick.size() <= 10)
+			std::cout << std::setw(10) << this->tab[i].nick << "|";
+		else
+			std::cout << std::setw(9) << this->tab[i].nick.substr(0, 9) << ".|";
+		std::cout  << std::endl;
 		i++;
 	}
 }

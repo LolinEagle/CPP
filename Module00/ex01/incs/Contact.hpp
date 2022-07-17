@@ -18,24 +18,12 @@
 
 class Contact
 {
-	private:
-
 	public:
 		std::string	first;
 		std::string	last;
 		std::string	nick;
 		std::string	phone;
 		std::string	secret;
-		Contact();
-		~Contact();
 };
-
-Contact::Contact()
-{
-}
-
-Contact::~Contact()
-{
-}
 
 #endif
