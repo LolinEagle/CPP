@@ -38,15 +38,16 @@ void	PhoneBook::next_contact()
 		this->i = 0;
 }
 
-void	PhoneBook::print_all()
+int	PhoneBook::print_all()
 {
 	int			i = 0;
-	std::string	str;
+	int			id;
+	std::string	line;
 
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	while (i < 8)
 	{
-		std::cout << "|" << std::setw(10) << i << "|";
+		std::cout << "|" << std::setw(10) << i + 1 << "|";
 		if (this->tab[i].first.size() <= 10)
 			std::cout << std::setw(10) << this->tab[i].first << "|";
 		else
@@ -62,4 +63,27 @@ void	PhoneBook::print_all()
 		std::cout  << std::endl;
 		i++;
 	}
+	std::cout << "Enter a index to have more info> ";
+	while (getline(std::cin, line))
+	{
+		if (line.size() != 1)
+		{
+			std::cout << "Enter a index to have more info> ";
+			continue ;
+		}
+		id = atoi(line.c_str());
+    	if (id < 1 || id > 8)
+		{
+			std::cout << "Enter a index to have more info> ";
+			continue ;
+		}
+		std::cout << "index : " << id << std::endl;
+		id--;
+		std::cout << "first name : " << this->tab[id].first << std::endl;
+		std::cout << "last name : " << this->tab[id].last << std::endl;
+		std::cout << "nick name : " << this->tab[id].nick << std::endl;
+		std::cout << "phone number : " << this->tab[id].phone << std::endl;
+		return (0);
+	}
+	return (1);
 }

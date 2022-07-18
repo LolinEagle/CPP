@@ -12,43 +12,55 @@
 
 #include "PhoneBook.hpp"
 
-void	set_contact(const char *str, PhoneBook *book, int n)
+int	set_contact(const char *str, PhoneBook *book, int n)
 {
 	std::string	line;
 
-	do
+	std::cout << str;
+	while (getline(std::cin, line))
 	{
-		std::cout << str;
-		getline(std::cin, line);
+		if (line.empty())
+		{
+			std::cout << str;
+			continue;
+		}
+		(*book).set_contact(line, n);
+		return (0);
 	}
-	while (line.empty());
-	(*book).set_contact(line, n);
+	return (1);
 }
 
-int	main()
+int	main(void)
 {
 	PhoneBook	book;
 	std::string	line;
 
-	while (1)
+	std::cout << "PhoneBook> ";
+	while (getline(std::cin, line))
 	{
-		std::cout << "PhoneBook> ";
-		getline(std::cin, line);
 		if (line.compare("ADD") == 0)
 		{
-			set_contact("first name> ", &book, 0);
-			set_contact("last name> ", &book, 1);
-			set_contact("nick name> ", &book, 2);
-			set_contact("phone number> ", &book, 3);
-			set_contact("darkest secret> ", &book, 4);
+			if (set_contact("first name> ", &book, 0))
+				break ;
+			if (set_contact("last name> ", &book, 1))
+				break ;
+			if (set_contact("nick name> ", &book, 2))
+				break ;
+			if (set_contact("phone number> ", &book, 3))
+				break ;
+			if (set_contact("darkest secret> ", &book, 4))
+				break ;
 			book.next_contact();
 		}
 		else if (line.compare("SEARCH") == 0)
 		{
-			book.print_all();
+			if (book.print_all())
+				break ;
 		}
 		else if (line.compare("EXIT") == 0)
-			break;
+			exit(0);
+		std::cout << "PhoneBook> ";
 	}
+	std::cout << std::endl;
 	return (0);
 }

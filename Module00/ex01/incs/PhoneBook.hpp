@@ -23,7 +23,7 @@ class PhoneBook
 	public:
 		void	set_contact(std::string line, int n);
 		void	next_contact();
-		void	print_all();
+		int		print_all();
 		PhoneBook();
 };
 
