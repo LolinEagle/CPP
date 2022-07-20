@@ -5,13 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: frrusso <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/07 14:01:19 by frrusso           #+#    #+#              #
-#    Updated: 2022/07/07 14:01:22 by frrusso          ###   ########.fr        #
+#    Created: 2022/07/20 17:23:23 by frrusso           #+#    #+#              #
+#    Updated: 2022/07/20 17:23:26 by frrusso          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	account
-SRCS	=	${addprefix srcs/, Account.cpp tests.cpp}
+NAME	=	zombie
+SRCS	=	${addprefix srcs/, \
+				main.cpp \
+				newZombie.cpp \
+				randomChump.cpp \
+				Zombie.cpp \
+			}
 OBJS	=	${SRCS:.cpp=.o}
 DEPS	=	$(SRCS:.cpp=.d)
 CC		=	c++
