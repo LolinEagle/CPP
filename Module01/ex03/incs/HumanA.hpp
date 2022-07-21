@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
+
+#include "Weapon.hpp"
+
 class HumanA
 {
 	private:
@@ -21,3 +26,5 @@ class HumanA
 		HumanA(std::string name, Weapon gun);
 		~HumanA(void);
 };
+
+#endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "HumanB.hpp"
 
 void	HumanB::attack()
 {
@@ -18,7 +18,7 @@ void	HumanB::attack()
     std::cout << std::endl;
 }
 
-void	HumanA::setWeapon(Weapon gun)
+void	HumanB::setWeapon(Weapon gun)
 {
 	this->gun = gun;
 }

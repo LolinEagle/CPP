@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
+
 #include <iostream>
 #include <stdlib.h>
 
@@ -25,3 +26,5 @@ class Weapon
 		Weapon(std::string new_type);
 		~Weapon();
 };
+
+#endif
