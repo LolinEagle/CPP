@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:25:23 by frrusso           #+#    #+#             */
-/*   Updated: 2022/07/20 17:25:25 by frrusso          ###   ########.fr       */
+/*   Created: 2022/07/20 17:24:54 by frrusso           #+#    #+#             */
+/*   Updated: 2022/07/20 17:25:03 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <stdlib.h>
 
-int	main(void)
+class Zombie
 {
-	Zombie	*heap = newZombie("Leak_on_foot");
+	private:
+		std::string	name;
+	public:
+		void	announce(void);
+		void	setName(std::string name);
+		~Zombie();
+};
 
-	heap->announce();
-	randomChump("Sam");
-	delete (heap);
-	return (0);
-}
+Zombie*	zombieHorde(int N, std::string name);

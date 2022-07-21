@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:25:23 by frrusso           #+#    #+#             */
-/*   Updated: 2022/07/20 17:25:25 by frrusso          ###   ########.fr       */
+/*   Created: 2022/07/21 17:09:15 by frrusso           #+#    #+#             */
+/*   Updated: 2022/07/21 17:09:17 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int	main(void)
+void	HumanA::attack(void)
 {
-	Zombie	*heap = newZombie("Leak_on_foot");
+	std::cout << this->name << "attacks with their" << this->gun.getType() << std::endl;
+}
 
-	heap->announce();
-	randomChump("Sam");
-	delete (heap);
-	return (0);
+void	HumanA::setWeapon(Weapon gun)
+{
+	this->gun = gun;
+}
+
+HumanA::HumanA(std::string name, Weapon gun)
+{
+	this->name = name;
+	this->gun = gun;
+}
+
+HumanA::~HumanA(void)
+{
 }

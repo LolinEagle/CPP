@@ -5,19 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:25:23 by frrusso           #+#    #+#             */
-/*   Updated: 2022/07/20 17:25:25 by frrusso          ###   ########.fr       */
+/*   Created: 2022/07/21 17:08:46 by frrusso           #+#    #+#             */
+/*   Updated: 2022/07/21 17:08:47 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
 int	main(void)
 {
-	Zombie	*heap = newZombie("Leak_on_foot");
-
-	heap->announce();
-	randomChump("Sam");
-	delete (heap);
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
 	return (0);
 }

@@ -14,10 +14,15 @@
 
 int	main(void)
 {
-	Zombie	*heap = newZombie("Leak_on_foot");
+	int		i = 0;
+	Zombie*	zero;
 
-	heap->announce();
-	randomChump("Sam");
-	delete (heap);
+	zero = zombieHorde(8, "FC-KC");
+	while (i < 8)
+	{
+		zero[i].announce();
+		i++;
+	}
+	delete [] zero;
 	return (0);
 }

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:25:23 by frrusso           #+#    #+#             */
-/*   Updated: 2022/07/20 17:25:25 by frrusso          ###   ########.fr       */
+/*   Created: 2022/07/21 17:08:10 by frrusso           #+#    #+#             */
+/*   Updated: 2022/07/21 17:08:14 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-int	main(void)
+class HumanA
 {
-	Zombie	*heap = newZombie("Leak_on_foot");
-
-	heap->announce();
-	randomChump("Sam");
-	delete (heap);
-	return (0);
-}
+	private:
+		Weapon		gun;
+		std::string	name;
+	public:
+		void	attack(void);
+		void	setWeapon(Weapon gun);
+		HumanA(std::string name, Weapon gun);
+		~HumanA(void);
+};

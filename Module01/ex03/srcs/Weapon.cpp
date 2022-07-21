@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:25:23 by frrusso           #+#    #+#             */
-/*   Updated: 2022/07/20 17:25:25 by frrusso          ###   ########.fr       */
+/*   Created: 2022/07/21 17:08:59 by frrusso           #+#    #+#             */
+/*   Updated: 2022/07/21 17:09:01 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int	main(void)
+std::string	Weapon::getType() const
 {
-	Zombie	*heap = newZombie("Leak_on_foot");
+	return (this->type);
+}
 
-	heap->announce();
-	randomChump("Sam");
-	delete (heap);
-	return (0);
+void		Weapon::setType(std::string new_type)
+{
+	this->type = new_type;
+}
+
+Weapon::Weapon(std::string new_type)
+{
+	this->type = new_type;
+}
+
+Weapon::~Weapon()
+{
 }

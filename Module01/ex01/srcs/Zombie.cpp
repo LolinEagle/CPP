@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:25:23 by frrusso           #+#    #+#             */
-/*   Updated: 2022/07/20 17:25:25 by frrusso          ###   ########.fr       */
+/*   Created: 2022/07/20 17:25:42 by frrusso           #+#    #+#             */
+/*   Updated: 2022/07/20 17:25:44 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int	main(void)
+void	Zombie::announce(void)
 {
-	Zombie	*heap = newZombie("Leak_on_foot");
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-	heap->announce();
-	randomChump("Sam");
-	delete (heap);
-	return (0);
+void	Zombie::setName(std::string name)
+{
+	this->name = name;
+}
+
+Zombie::~Zombie()
+{
+	std::cout << this->name << " dies" << std::endl;
 }
