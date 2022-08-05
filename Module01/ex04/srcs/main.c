@@ -10,10 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <fstream>
+
 int	main(int ac, char **argv)
 {
+	std::ifstream	infile;
+	std::ofstream	outfile;
+	std::string		s1;
+	std::string		s2;
+
 	if (ac != 4)
 		return (0);
-
+	infile.open(argv[1]);
+	str.append(argv[1]);
+	str.append(".replace");
+	outfile.open(str);
+	infile.close();
+	outfile.close();
 	return (0);
 }
