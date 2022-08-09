@@ -22,6 +22,7 @@ int	main(int ac, char **argv)
 
 	if (ac != 4)
 		return (0);
+	std::cout << "test\n";
 	infile.open(argv[1]);
 	str.append(argv[1]);
 	str.append(".replace");

@@ -11,9 +11,7 @@
 # **************************************************************************** #
 
 NAME	=	sed_is_for_losers
-SRCS	=	${addprefix srcs/, \
-				main.cpp \
-			}
+SRCS	=	main.cpp
 OBJS	=	${SRCS:.cpp=.o}
 DEPS	=	$(SRCS:.cpp=.d)
 CC		=	c++
