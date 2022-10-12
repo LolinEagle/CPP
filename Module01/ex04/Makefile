@@ -36,6 +36,6 @@ fclean:clean
 re:fclean all
 
 run:${NAME}
-	./${NAME}
+	./${NAME} file.txt Lorem meroL
 
 .PHONY: all clean fclean re run
