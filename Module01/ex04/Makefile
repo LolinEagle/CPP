@@ -28,7 +28,7 @@ ${NAME}:${OBJS}
 all:${NAME}
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} *.replace
 
 fclean:clean
 	${RM} ${NAME}
