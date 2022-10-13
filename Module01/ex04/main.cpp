@@ -33,12 +33,13 @@ int	ft_parsing(int ac, char **av, std::ifstream *infile, std::ofstream *outfile)
 	}
 	out = av[1];
 	out += ".replace";
-	std::cout << "out file name is : " << out << '\n';
+	std::cout << "out file is : " << out << '\n';
 	outfile->open(out.data(), std::ofstream::trunc);
 	return (0);
 }
 
-void	ft_sed_is_for_losers(std::ifstream *infile, std::ofstream *outfile, std::string *s1, std::string *s2)
+void	ft_sed_is_for_losers(std::ifstream *infile, std::ofstream *outfile,
+std::string *s1, std::string *s2)
 {
 	std::string		str;
 	char			c;
@@ -47,19 +48,15 @@ void	ft_sed_is_for_losers(std::ifstream *infile, std::ofstream *outfile, std::st
 	while (!infile->eof())
 	{
 		str.push_back(c);
-		// if (str.find(s1))
-		// {
-		// 	std::cout << str;
-		//	str.erase(str.end() - s1.size(), str.end());
-		// 	outfile << str;
-		// 	outfile << s2;
-		// 	str.clear();
-		// }
-		(void)s1;
-		(void)s2;
+		if (str.find(*s1) != std::string::npos)
+		{
+			str.erase(str.end() - (*s1).size(), str.end());
+			*outfile << str;
+			*outfile << *s2;
+			str.clear();
+		}
 		c = infile->get();
 	}
-	std::cout << str;// Debug
 	*outfile << str;
 	infile->close();
 	outfile->close();

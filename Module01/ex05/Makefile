@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: frrusso <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/28 18:03:59 by frrusso           #+#    #+#              #
-#    Updated: 2022/07/28 18:04:01 by frrusso          ###   ########.fr        #
+#    Created: 2022/10/13 13:13:15 by frrusso           #+#    #+#              #
+#    Updated: 2022/10/13 13:13:18 by frrusso          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	sed_is_for_losers
-SRCS	=	main.cpp
+NAME	=	harl
+SRCS	=	main.cpp Harl.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
@@ -26,14 +26,11 @@ ${NAME}:${OBJS}
 all:${NAME}
 
 clean:
-	${RM} ${OBJS} *.replace
+	${RM} ${OBJS}
 
 fclean:clean
 	${RM} ${NAME}
 
 re:fclean all
 
-run:${NAME}
-	./${NAME} file.txt Lorem meroL
-
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re
