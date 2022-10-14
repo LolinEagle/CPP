@@ -24,7 +24,7 @@ int	set_contact(const char *str, PhoneBook *book, int n)
 			std::cout << str;
 			continue;
 		}
-		(*book).set_contact(line, n);
+		book->set_contact(line, n);
 		return (0);
 	}
 	return (1);
@@ -35,6 +35,10 @@ int	main(void)
 	PhoneBook	book;
 	std::string	line;
 
+	std::cout << "- Wellcome to PhoneBook -\n";
+	std::cout << "You can ADD a new contact.\n";
+	std::cout << "You can SEARCH for a contact.\n";
+	std::cout << "Or you can EXIT the PhoneBook.\n";
 	std::cout << "PhoneBook> ";
 	while (getline(std::cin, line))
 	{
@@ -58,7 +62,7 @@ int	main(void)
 				break ;
 		}
 		else if (line.compare("EXIT") == 0)
-			exit(0);
+			break ;
 		std::cout << "PhoneBook> ";
 	}
 	std::cout << std::endl;

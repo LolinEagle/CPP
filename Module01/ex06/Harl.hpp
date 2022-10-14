@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 13:13:02 by frrusso           #+#    #+#             */
-/*   Updated: 2022/10/13 13:13:06 by frrusso          ###   ########.fr       */
+/*   Created: 2022/10/13 13:16:21 by frrusso           #+#    #+#             */
+/*   Updated: 2022/10/13 13:16:24 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include <iostream>
+#include <string>
 
-int	main(int ac, char **av)
+class Harl
 {
-	Harl	harl;
-
-	if (ac == 2)
-		harl.complain(av[1]);
-	return (0);
-}
+	private:
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+	public:
+		void complain(std::string level);
+		Harl(void);
+		~Harl();
+};

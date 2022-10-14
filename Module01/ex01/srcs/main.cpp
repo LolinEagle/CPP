@@ -14,9 +14,10 @@
 
 int	main(void)
 {
-	int		i = 0;
+	int		i;
 	Zombie*	zero;
 
+	i = 0;
 	zero = zombieHorde(8, "FC-KC");
 	while (i < 8)
 	{

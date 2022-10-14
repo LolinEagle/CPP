@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME	=	phonebook
-SRCS	=	${addprefix srcs/, main.cpp PhoneBook.cpp}
+SRCS	=	${addprefix srcs/, main.cpp PhoneBook.cpp Contact.cpp}
 OBJS	=	${SRCS:.cpp=.o}
 DEPS	=	$(SRCS:.cpp=.d)
 CC		=	c++

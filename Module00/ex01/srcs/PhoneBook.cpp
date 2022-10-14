@@ -20,15 +20,15 @@ PhoneBook::PhoneBook()
 void	PhoneBook::set_contact(std::string line, int n)
 {
 	if (n == 0)
-		this->tab[i].first = line;
+		this->tab[i].set_first(line);
 	else if (n == 1)
-		this->tab[i].last = line;
+		this->tab[i].set_last(line);
 	else if (n == 2)
-		this->tab[i].nick = line;
+		this->tab[i].set_nick(line);
 	else if (n == 3)
-		this->tab[i].phone = line;
+		this->tab[i].set_phone(line);
 	else if (n == 4)
-		this->tab[i].secret = line;
+		this->tab[i].set_secret(line);
 }
 
 void	PhoneBook::next_contact()
@@ -40,27 +40,28 @@ void	PhoneBook::next_contact()
 
 int	PhoneBook::print_all()
 {
-	int			i = 0;
+	int			i;
 	int			id;
 	std::string	line;
 
+	i = 0;
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	while (i < 8)
 	{
 		std::cout << "|" << std::setw(10) << i + 1 << "|";
-		if (this->tab[i].first.size() <= 10)
-			std::cout << std::setw(10) << this->tab[i].first << "|";
+		if (this->tab[i].get_first().size() <= 10)
+			std::cout << std::setw(10) << this->tab[i].get_first() << "|";
 		else
-			std::cout << std::setw(9) << this->tab[i].first.substr(0, 9) << ".|";
-		if (this->tab[i].last.size() <= 10)
-			std::cout << std::setw(10) << this->tab[i].last << "|";
+			std::cout << std::setw(9) << this->tab[i].get_first().substr(0, 9) << ".|";
+		if (this->tab[i].get_last().size() <= 10)
+			std::cout << std::setw(10) << this->tab[i].get_last() << "|";
 		else
-			std::cout << std::setw(9) << this->tab[i].last.substr(0, 9) << ".|";
-		if (this->tab[i].nick.size() <= 10)
-			std::cout << std::setw(10) << this->tab[i].nick << "|";
+			std::cout << std::setw(9) << this->tab[i].get_last().substr(0, 9) << ".|";
+		if (this->tab[i].get_nick().size() <= 10)
+			std::cout << std::setw(10) << this->tab[i].get_nick() << "|";
 		else
-			std::cout << std::setw(9) << this->tab[i].nick.substr(0, 9) << ".|";
-		std::cout  << std::endl;
+			std::cout << std::setw(9) << this->tab[i].get_nick().substr(0, 9) << ".|";
+		std::cout << std::endl;
 		i++;
 	}
 	std::cout << "Enter a index to have more info> ";
@@ -79,10 +80,10 @@ int	PhoneBook::print_all()
 		}
 		std::cout << "index : " << id << std::endl;
 		id--;
-		std::cout << "first name : " << this->tab[id].first << std::endl;
-		std::cout << "last name : " << this->tab[id].last << std::endl;
-		std::cout << "nick name : " << this->tab[id].nick << std::endl;
-		std::cout << "phone number : " << this->tab[id].phone << std::endl;
+		std::cout << "first name : " << this->tab[id].get_first() << std::endl;
+		std::cout << "last name : " << this->tab[id].get_last() << std::endl;
+		std::cout << "nick name : " << this->tab[id].get_nick() << std::endl;
+		std::cout << "phone number : " << this->tab[id].get_phone() << std::endl;
 		return (0);
 	}
 	return (1);
