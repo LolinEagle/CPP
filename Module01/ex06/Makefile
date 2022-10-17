@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	Harl
+NAME	=	HarlFilter
 SRCS	=	main.cpp Harl.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CC		=	c++

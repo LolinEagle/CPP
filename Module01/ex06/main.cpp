@@ -16,6 +16,8 @@ int	main(int ac, char **av)
 {
 	Harl	harl;
 
+	if (ac == 1)
+		std::cout << "[ Probably singing a stupid song ]\n";
 	if (ac == 2)
 		harl.complain(av[1]);
 	return (0);

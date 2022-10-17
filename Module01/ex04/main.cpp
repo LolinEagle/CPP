@@ -20,20 +20,20 @@ int	ft_parsing(int ac, char **av, std::ifstream *infile, std::ofstream *outfile)
 
 	if (ac != 4)
 	{
-		std::cout << "Usage : ./sed_is_for_losers file string1 string2\n";
+		std::cout << "Usage : ./sed_is_for_losers file string1 string2" << std::endl;
 		return (1);
 	}
-	std::cout << "filename is : " << av[1] << '\n';
-	std::cout << "string 1 is : " << av[2] << '\n';
-	std::cout << "string 2 is : " << av[3] << '\n';
+	std::cout << "filename is : " << av[1] << std::endl;
+	std::cout << "string 1 is : " << av[2] << std::endl;
+	std::cout << "string 2 is : " << av[3] << std::endl;
 	if (!infile->is_open())
 	{
-		std::cout << av[1] << " not a valid file\n";
+		std::cout << av[1] << " not a valid file" << std::endl;
 		return (1);
 	}
 	out = av[1];
 	out += ".replace";
-	std::cout << "out file is : " << out << '\n';
+	std::cout << "out file is : " << out << std::endl;
 	outfile->open(out.data(), std::ofstream::trunc);
 	return (0);
 }
