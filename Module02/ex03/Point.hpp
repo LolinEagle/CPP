@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 12:02:56 by frrusso           #+#    #+#             */
-/*   Updated: 2022/10/21 12:02:58 by frrusso          ###   ########.fr       */
+/*   Created: 2022/10/25 13:43:34 by frrusso           #+#    #+#             */
+/*   Updated: 2022/10/25 13:43:36 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef POINT_HPP
+#define POINT_HPP
+
 #include "Fixed.hpp"
 
-int	main(void)
+class Point
 {
-	Fixed		a;
-	Fixed const	b(Fixed(5.05f) * Fixed(2));
+	private:
+		Fixed	_x;
+		Fixed	_y;
+	public:
+		// Constructor & Destructor
+		Point(void);
+		Point(const float x, const float y);
+		Point(const Point &point);
+		~Point();
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max(a, b) << std::endl;
-	return (0);
-}
+		// Operator overload
+		Point	&operator=(const Point &point);
+
+		// Function
+		int	getx(void) const;
+		int	gety(void) const;
+};
+
+bool	bsp(Point const a, Point const b, Point const c, Point const point);
+
+#endif

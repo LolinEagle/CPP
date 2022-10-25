@@ -10,19 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
 
 int	main(void)
 {
-	Fixed		a;
-	Fixed const	b(Fixed(5.05f) * Fixed(2));
-
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max(a, b) << std::endl;
+	bsp(Point(0, 0), Point(0, 10), Point(10, 0), Point(1, 1));
+	bsp(Point(0, 0), Point(0, 10), Point(10, 0), Point(10, 10));
+	bsp(Point(0, 0), Point(0, 83), Point(93, 0), Point(00, 83));
+	bsp(Point(0, 0), Point(0, 94), Point(60, 0), Point(00, 60));
 	return (0);
 }
