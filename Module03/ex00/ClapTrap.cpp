@@ -96,7 +96,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hp == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " is is already break." << std::endl;
+		std::cout << "ClapTrap " << this->_name << " is already break." << std::endl;
 		return ;
 	}
 	std::cout << "ClapTrap " << this->_name << " take " << amount <<
