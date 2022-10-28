@@ -10,26 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
-	ScavTrap	a;
-	ScavTrap	b("C'est nous les Daft Punk");
-	ScavTrap	c(b);
+	FragTrap	a;
+	FragTrap	b("shox");
+	FragTrap	c(b);
 
-	a = b;
+	a = c;
+	b.setname("apex");
+	c.setname("zywoo");
 	std::cout << a.getname() << std::endl;
 	std::cout << b.getname() << std::endl;
 	std::cout << c.getname() << std::endl;
-	a.attack("des gend!");
-	std::cout << "hp=" << a.gethp() << " energy=" << a.getenergy() << " attack=" << a.getattack() << std::endl;
-	std::cout << "hp=" << b.gethp() << " energy=" << b.getenergy() << " attack=" << b.getattack() << std::endl;
-	std::cout << "hp=" << c.gethp() << " energy=" << c.getenergy() << " attack=" << c.getattack() << std::endl;
-	b.takeDamage(10);
-	b.takeDamage(10);
-	c.beRepaired(90);
+	a.attack("avec une he");
+	std::cout << "hp=" << a.gethp() << " energy=" << a.getenergy() << " attack="
+	<< a.getattack() << std::endl;
+	std::cout << "hp=" << b.gethp() << " energy=" << b.getenergy() << " attack="
+	<< b.getattack() << std::endl;
+	std::cout << "hp=" << c.gethp() << " energy=" << c.getenergy() << " attack="
+	<< c.getattack() << std::endl;
+	a.takeDamage(100);
+	b.takeDamage(20);
+	std::cout << a.gethp() << std::endl;
 	std::cout << b.gethp() << std::endl;
-	std::cout << c.gethp() << std::endl;
+	c.highFivesGuys();
 	return (0);
 }
