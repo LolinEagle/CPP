@@ -14,24 +14,23 @@
 
 DiamondTrap::DiamondTrap(void)
 {
-	std::cout << "DiamondTrap Default constructor called" << std::endl;
+	std::cout << "DiamondTrap Default constructor called\n" << std::endl;
 	ClapTrap::_name = "_clap_name";
 	this->_energy = 50;
 }
 
 DiamondTrap::DiamondTrap(std::string name)
 {
-	std::cout << "DiamondTrap String constructor called" << std::endl;
+	std::cout << "DiamondTrap String constructor called\n" << std::endl;
 	this->_name = name;
-	ClapTrap::_name = _name + "_clap_name";
+	ClapTrap::_name = name + "_clap_name";
 	this->_energy = 50;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &diamond) : ClapTrap(), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(const DiamondTrap &diamond)
 {
 	std::cout << "DiamondTrap Copy constructor called" << std::endl;
-	// ClapTrap::_name = this->_name + "_clap_name";
-	// *this = diamond;
+	*this = diamond;
 }
 
 DiamondTrap::~DiamondTrap()
@@ -41,8 +40,9 @@ DiamondTrap::~DiamondTrap()
 
 DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &diamond)
 {
-	std::cout << "DiamondTrap Copy assignment operator called" << std::endl;
-	this->_name = diamond.getname();
+	std::cout << "DiamondTrap Copy assignment operator called\n" << std::endl;
+	this->_name = diamond._name;
+	ClapTrap::_name = diamond.getname();
 	this->_hp = diamond.gethp();
 	this->_energy = diamond.getenergy();
 	this->_attack = diamond.getattack();
@@ -51,5 +51,6 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &diamond)
 
 void	DiamondTrap::whoAmI(void)
 {
-	// Cette fonction membre affichera à la fois son nom et le nom de son sous-objet ClapTrap.
+	std::cout << "name=\"" << this->_name << "\" ClapTrap name=\"" <<
+	ClapTrap::_name << "\"" << std::endl;
 }

@@ -30,7 +30,7 @@ ClapTrap::ClapTrap(const ClapTrap &clap)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called\n" << std::endl;
 }	
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &clap)
