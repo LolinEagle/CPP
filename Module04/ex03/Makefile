@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: frrusso <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/29 12:09:10 by frrusso           #+#    #+#              #
-#    Updated: 2022/10/29 12:09:13 by frrusso          ###   ########.fr        #
+#    Created: 2022/11/02 17:44:15 by frrusso           #+#    #+#              #
+#    Updated: 2022/11/02 17:44:17 by frrusso          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	animal
-SRCS	=	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+NAME	=	a.out
+SRCS	=	main.cpp AMateria.cpp Cure.cpp Ice.cpp ICharacter.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CC		=	clang++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98

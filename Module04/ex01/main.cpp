@@ -16,49 +16,29 @@
 
 void	main1(void)
 {
-	const Animal	*a = new Animal();
-	const Animal	*b = new Dog();
-	const Animal	*c = new Cat();
+	const Animal	*i[4];
 
-	std::cout << b->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	c->makeSound();
-	b->makeSound();
-	a->makeSound();
-	delete(a);
-	delete(b);
-	delete(c);
-}
-
-void	main2(void)
-{
-	const WrongAnimal	*a = new WrongAnimal();
-	const WrongAnimal	*c = new WrongCat();
-
-	std::cout << c->getType() << " " << std::endl;
-	c->makeSound();
-	a->makeSound();
-	delete(a);
-	delete(c);	
+	i[0] = new Dog();
+	i[1] = new Dog();
+	i[2] = new Cat();
+	i[3] = new Cat();
+	std::cout << std::endl;
+	delete(i[0]);
+	delete(i[1]);
+	delete(i[2]);
+	delete(i[3]);
+	std::cout << std::endl;
 }
 
 int	main(void)
 {
-	Animal	a;
-	Dog		b;
-	Cat		c;
-	Animal	a1(a);
-	Dog		b1(b);
-	Cat		c1(c);
-	
+	const Animal	*j = new Dog();
+	const Animal	*i = new Cat();
+
 	std::cout << std::endl;
-	a = a1;
-	b = b1;
-	c = c1;
+	delete(j);
+	delete(i);
 	std::cout << std::endl;
 	main1();
-	std::cout << std::endl;
-	main2();
-	std::cout << std::endl;
 	return (0);
 }

@@ -19,7 +19,7 @@ class Animal
 {
 	protected:
 		std::string	_type;
-	public:
+
 		// Constructor & Destructor
 		Animal(void);
 		Animal(const Animal &copy);
