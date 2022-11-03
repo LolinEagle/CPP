@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME	=	a.out
-SRCS	=	main.cpp AMateria.cpp Cure.cpp Ice.cpp ICharacter.cpp
+SRCS	=	main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CC		=	clang++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98

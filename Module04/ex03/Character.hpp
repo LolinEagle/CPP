@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 17:54:28 by frrusso           #+#    #+#             */
-/*   Updated: 2022/11/02 17:54:30 by frrusso          ###   ########.fr       */
+/*   Created: 2022/11/03 13:25:47 by frrusso           #+#    #+#             */
+/*   Updated: 2022/11/03 13:25:51 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include <iostream>
 #include "ICharacter.hpp"
 
-class AMateria
+class Character : public ICharacter
 {
-	protected:
-		std::string	_type;
+	private:
+		std::string	_name;
+		AMateria	*_items[4];
 	public:
 		// Constructor & Destructor
-		AMateria(void);
-		AMateria(std::string const & type);
-		AMateria(const AMateria &copy);
-		virtual ~AMateria();
-		AMateria	&operator=(const AMateria &copy);
+		Character(void);
+		Character(std::string str);
+		Character(const Character &copy);
+		virtual ~Character();
+		Character	&operator=(const Character &copy);
 
-		// Function
-		std::string const & getType(void) const;
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+		// std::string const & getName() const;
+		// void equip(AMateria* m);
+		// void unequip(int idx);
+		// void use(int idx, ICharacter& target);
 };
 
 #endif

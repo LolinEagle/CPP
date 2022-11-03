@@ -13,6 +13,19 @@
 #ifndef ICE_HPP
 #define ICE_HPP
 
+#include "AMateria.hpp"
 
+class Ice : public AMateria
+{
+	public:
+		// Constructor & Destructor
+		Ice(void);
+		Ice(const Ice &copy);
+		virtual ~Ice();
+		Ice	&operator=(const Ice &copy);
+
+		// Function
+		AMateria	*clone() const;
+};
 
 #endif
