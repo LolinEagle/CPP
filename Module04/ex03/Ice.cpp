@@ -14,7 +14,7 @@
 
 Ice::Ice(void)
 {
-	std::cout << "Ice : Default constructor called" << std::endl;
+	std::cout << "Ice : Default constructor called\n" << std::endl;
 	this->_type = "ice";
 }
 

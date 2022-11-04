@@ -15,27 +15,50 @@
 #include "Cure.hpp"
 #include "Ice.hpp"
 
+void	main1(IMateriaSource *src, ICharacter *me)
+{
+	AMateria	*tmp;
+
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	me->printItems();
+	me->use(0, *me);
+	me->use(1, *me);
+	me->use(2, *me);
+	me->unequip(0);
+	me->unequip(1);
+	me->unequip(2);
+}
+
 int	main(void)
 {
 	IMateriaSource	*src = new MateriaSource();
 
-	src->learnMateria(new Ice());// Leak
-	src->learnMateria(new Cure());// Leak
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Ice());
+	src->printItems();
 
-	ICharacter	*me = new Character("me");
-	AMateria	*tmp;
+	ICharacter	*me = new Character("frrusso");
 
-	(void)tmp;
-	// tmp = src->createMateria("ice");
-	// me->equip(tmp);
-	// tmp = src->createMateria("cure");
-	// me->equip(tmp);
+	main1(src, me);
 
-	// ICharacter* bob = new Character("bob");
+	ICharacter	*bob = new Character("bob lennon");
 	
-	// me->use(0, *bob);
-	// me->use(1, *bob);
-	// delete (bob);
+	me->use(0, *bob);
+	me->use(1, *bob);
+	std::cout << std::endl;
+	delete (bob);
 	delete (me);
 	delete (src);
 	return (0);

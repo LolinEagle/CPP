@@ -14,7 +14,7 @@
 
 Cure::Cure(void)
 {
-	std::cout << "Cure : Default constructor called" << std::endl;
+	std::cout << "Cure : Default constructor called\n" << std::endl;
 	this->_type = "cure";
 }
 

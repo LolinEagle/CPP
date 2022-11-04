@@ -13,14 +13,15 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include <iostream>
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class Character : public ICharacter
 {
 	private:
 		std::string	_name;
 		AMateria	*_items[4];
+		AMateria	*_tmp;
 	public:
 		// Constructor & Destructor
 		Character(void);
@@ -29,10 +30,12 @@ class Character : public ICharacter
 		virtual ~Character();
 		Character	&operator=(const Character &copy);
 
-		// std::string const & getName() const;
-		// void equip(AMateria* m);
-		// void unequip(int idx);
-		// void use(int idx, ICharacter& target);
+		// Function
+		void				printItems();
+		const std::string	&getName() const;
+		void				equip(AMateria *m);
+		void				unequip(int idx);
+		void				use(int idx, ICharacter& target);
 };
 
 #endif

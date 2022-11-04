@@ -28,8 +28,9 @@ class MateriaSource : public IMateriaSource
 		MateriaSource	&operator=(const MateriaSource &copy);
 		
 		// Function
+		void		printItems();
 		void		learnMateria(AMateria *type);
-		// AMateria	*createMateria(std::string const & type);
+		AMateria	*createMateria(std::string const &type);
 };
 
 #endif

@@ -17,7 +17,7 @@ AMateria::AMateria(void)
 	std::cout << "AMateria : Default constructor called" << std::endl;
 }
 
-AMateria::AMateria(std::string const & type)
+AMateria::AMateria(std::string const &type)
 {
 	std::cout << "AMateria : String constructor called" << std::endl;
 	this->_type = type;
@@ -25,13 +25,13 @@ AMateria::AMateria(std::string const & type)
 
 AMateria::AMateria(const AMateria &copy)
 {
-	std::cout << "Ice : Copy constructor called" << std::endl;
+	std::cout << "AMateria : Copy constructor called" << std::endl;
 	*this = copy;
 }
 
 AMateria::~AMateria()
 {
-	std::cout << "Ice : Default destructor called" << std::endl;
+	std::cout << "AMateria : Default destructor called\n" << std::endl;
 }
 
 AMateria	&AMateria::operator=(const AMateria &copy)
@@ -48,5 +48,12 @@ std::string const &AMateria::getType(void) const
 
 void	AMateria::use(ICharacter& target)
 {
-	(void)target;
+	if (this->_type == "ice")
+		std::cout << "Ice : \"* shoots an ice bolt at " << target.getName() <<
+		" *\"" << std::endl;
+	else if (this->_type == "cure")
+		std::cout << "Cure : \"* heals " << target.getName() <<
+		"\'s wounds *\"" << std::endl;
+	else
+		std::cout << this->_type << " : \"* is a wrong spell *\"" << std::endl;
 }

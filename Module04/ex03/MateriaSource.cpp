@@ -14,7 +14,9 @@
 
 MateriaSource::MateriaSource(void)
 {
-	std::cout << "MateriaSource : Default constructor called" << std::endl;
+	std::cout << "MateriaSource : Default constructor called\n" << std::endl;
+	for (int i = 0; i < 4; i++)
+		this->_items[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &copy)
@@ -25,7 +27,9 @@ MateriaSource::MateriaSource(const MateriaSource &copy)
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << "MateriaSource : Default destructor called" << std::endl;
+	std::cout << "MateriaSource : Default destructor called\n" << std::endl;
+	for (int i = 0; i < 4; i++)
+		delete (this->_items[i]);
 }
 
 MateriaSource	&MateriaSource::operator=(const MateriaSource &copy)
@@ -36,21 +40,37 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &copy)
 	return (*this);
 }
 
-void	MateriaSource::learnMateria(AMateria *type)
+void	MateriaSource::printItems()
 {
-	static int	i = 0;
-
-	if (i < 4)
-		return ;
-	this->_items[i] = type;
-	i++;
+	for (int i = 0; i < 4; i++)
+	{
+		if (_items[i])
+			std::cout << "AMateria" << i << ':' << _items[i]->getType() << std::endl;
+		else
+			std::cout << "AMateria" << i << ':' << std::endl;
+	}
+	std::cout << std::endl;
 }
 
-// • createMateria(std::string const &)
-// Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise
-// précédemment par la MateriaSource et dont le type est le même que celui passé
-// en paramètre. Retourne 0 si le type est inconnu.
-// AMateria	*MateriaSource::createMateria(std::string const & type)
-// {
+void	MateriaSource::learnMateria(AMateria *type)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_items[i] == NULL)
+		{
+			this->_items[i] = type;
+			return ;
+		}
+	}
+	delete (type);
+}
 
-// }
+AMateria	*MateriaSource::createMateria(std::string const &type)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_items[i]->getType() == type)
+			return (this->_items[i]->clone());
+	}
+	return (NULL);
+}
