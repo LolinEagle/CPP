@@ -25,7 +25,8 @@ class Cure : public AMateria
 		Cure	&operator=(const Cure &copy);
 
 		// Function
-		AMateria	*clone() const;
+		AMateria	*clone(void) const;
+		void 		use(ICharacter& target);
 };
 
 #endif

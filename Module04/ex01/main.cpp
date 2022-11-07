@@ -16,17 +16,39 @@
 
 void	main1(void)
 {
-	const Animal	*i[4];
+	std::cout << "- Main 1 -"<< std::endl;
+	Animal	*i[4];
 
 	i[0] = new Dog();
-	i[1] = new Dog();
-	i[2] = new Cat();
+	i[1] = new Cat();
+	i[2] = new Dog();
 	i[3] = new Cat();
 	std::cout << std::endl;
-	delete(i[0]);
-	delete(i[1]);
-	delete(i[2]);
-	delete(i[3]);
+	for (int j = 0; j < 4; j++)
+		delete(i[j]);
+	std::cout << std::endl;
+}
+
+void	main2(void)
+{
+	std::cout << "- Main 2 -"<< std::endl;
+	Dog	*a = new Dog();
+	Cat	*b = new Cat();
+	Dog	*c = new Dog(*a);
+	Cat	*d = new Cat(*b);
+
+	std::cout << std::endl;
+	a->makeSound();
+	b->makeSound();
+	std::cout << std::endl;
+	delete(a);
+	delete(b);
+	std::cout << std::endl;
+	c->makeSound();
+	d->makeSound();
+	std::cout << std::endl;
+	delete(c);
+	delete(d);
 	std::cout << std::endl;
 }
 
@@ -36,9 +58,13 @@ int	main(void)
 	const Animal	*i = new Cat();
 
 	std::cout << std::endl;
+	i->makeSound();
+	j->makeSound();
+	std::cout << std::endl;
 	delete(j);
 	delete(i);
 	std::cout << std::endl;
 	main1();
+	main2();
 	return (0);
 }

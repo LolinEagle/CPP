@@ -35,6 +35,11 @@ Cat	&Cat::operator=(const Cat &copy)
 {
     std::cout << "Cat : Assignment operator called" << std::endl;
 	this->_type = copy._type;
-	this->_brain = copy._brain;
+	this->_brain = new Brain(*copy._brain);
 	return (*this);
+}
+
+void	Cat::makeSound(void) const
+{
+	std::cout << "Miaou" << std::endl;
 }

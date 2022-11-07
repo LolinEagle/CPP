@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 17:54:28 by frrusso           #+#    #+#             */
-/*   Updated: 2022/11/02 17:54:30 by frrusso          ###   ########.fr       */
+/*   Created: 2022/11/07 12:09:21 by frrusso           #+#    #+#             */
+/*   Updated: 2022/11/07 12:09:22 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "ICharacter.hpp"
 
-class AMateria
+class Bureaucrat
 {
-	protected:
-		std::string	_type;
+	private:
+		const std::string	_name;
+		int					_grade;
 	public:
 		// Constructor & Destructor
-		AMateria(void);
-		AMateria(std::string const & type);
-		AMateria(const AMateria &copy);
-		virtual ~AMateria();
-		AMateria	&operator=(const AMateria &copy);
+		Bureaucrat(void);
+		Bureaucrat(int grade);
+		Bureaucrat(const Bureaucrat &copy);
+		~Bureaucrat();
+		Bureaucrat	&operator=(const Bureaucrat &copy);
 
 		// Function
-		std::string const	&getType(void) const;
-		virtual AMateria*	clone(void) const = 0;
-		virtual void 		use(ICharacter& target);
+		std::string	getName(void);
+		int			getGrade(void);
 };
 
 #endif

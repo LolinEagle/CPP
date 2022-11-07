@@ -19,7 +19,7 @@ class Animal
 {
 	protected:
 		std::string	_type;
-
+	public:
 		// Constructor & Destructor
 		Animal(void);
 		Animal(const Animal &copy);
@@ -27,8 +27,8 @@ class Animal
 		Animal	&operator=(const Animal &copy);
 
 		// Function
-		std::string	getType(void) const;
-		void		makeSound(void) const;
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const = 0;
 };
 
 #endif

@@ -33,6 +33,7 @@ void	main1(IMateriaSource *src, ICharacter *me)
 	me->use(0, *me);
 	me->use(1, *me);
 	me->use(2, *me);
+	std::cout << std::endl;
 	me->unequip(0);
 	me->unequip(1);
 	me->unequip(2);

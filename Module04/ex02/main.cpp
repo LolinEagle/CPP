@@ -18,10 +18,12 @@ int	main(void)
 {
 	const Dog	*j = new Dog();
 	const Cat	*i = new Cat();
-	// Animal		a;
-	// Animal		b(a);
 
-	// a = b;
+	std::cout << std::endl;
+	std::cout << j->getType() << std::endl;
+	j->makeSound();
+	std::cout << i->getType() << std::endl;
+	i->makeSound();
 	std::cout << std::endl;
 	delete(j);
 	delete(i);

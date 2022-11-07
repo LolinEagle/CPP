@@ -39,13 +39,3 @@ std::string	Animal::getType(void) const
 {
 	return (this->_type);
 }
-
-void		Animal::makeSound(void) const
-{
-	if (this->_type == "Dog")
-		std::cout << "Wouf" << std::endl;
-	else if (this->_type == "Cat")
-		std::cout << "Miaou" << std::endl;
-	else
-		std::cout << "*Animal noices*" << std::endl;
-}

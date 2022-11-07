@@ -23,6 +23,9 @@ class Cat : public Animal
 		Cat(const Cat &copy);
 		~Cat();
 		Cat	&operator=(const Cat &copy);
+
+		// Function
+		void	makeSound(void) const;
 };
 
 #endif

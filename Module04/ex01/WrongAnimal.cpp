@@ -40,10 +40,7 @@ std::string	WrongAnimal::getType(void) const
 	return (this->_type);
 }
 
-void		WrongAnimal::makeSound(void) const
+void	WrongAnimal::makeSound(void) const
 {
-    if (this->_type == "WrongCat")
-		std::cout << "Hello human! I am a cat" << std::endl;
-	else
-		std::cout << "*WrongAnimal noices*" << std::endl;
+	std::cout << "*WrongAnimal noices*" << std::endl;
 }

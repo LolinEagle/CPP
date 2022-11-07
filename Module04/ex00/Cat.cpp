@@ -35,3 +35,8 @@ Cat	&Cat::operator=(const Cat &copy)
 	this->_type = copy._type;
 	return (*this);
 }
+
+void	Cat::makeSound(void) const
+{
+	std::cout << "Miaou" << std::endl;
+}

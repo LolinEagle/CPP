@@ -48,12 +48,6 @@ std::string const &AMateria::getType(void) const
 
 void	AMateria::use(ICharacter& target)
 {
-	if (this->_type == "ice")
-		std::cout << "Ice : \"* shoots an ice bolt at " << target.getName() <<
-		" *\"" << std::endl;
-	else if (this->_type == "cure")
-		std::cout << "Cure : \"* heals " << target.getName() <<
-		"\'s wounds *\"" << std::endl;
-	else
-		std::cout << this->_type << " : \"* is a wrong spell *\"" << std::endl;
+	std::cout << this->_type << " : \"* is a wrong spell And cannot be used on"
+	<< target.getName() << "*\"" << std::endl;
 }

@@ -13,7 +13,7 @@
 NAME	=	phonebook
 SRCS	=	${addprefix srcs/, main.cpp PhoneBook.cpp Contact.cpp}
 OBJS	=	${SRCS:.cpp=.o}
-DEPS	=	$(SRCS:.cpp=.d)
+DEPS	=	${SRCS:.cpp=.d}
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 INC		=	-I ./incs
