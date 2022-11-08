@@ -23,6 +23,7 @@ class Bureaucrat
 	public:
 		// Constructor & Destructor
 		Bureaucrat(void);
+		Bureaucrat(std::string name);
 		Bureaucrat(int grade);
 		Bureaucrat(const Bureaucrat &copy);
 		~Bureaucrat();

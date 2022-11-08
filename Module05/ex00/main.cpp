@@ -14,5 +14,10 @@
 
 int	main(void)
 {
+	Bureaucrat	a(0);
+	Bureaucrat	b(1);
+	Bureaucrat	c(150);
+	Bureaucrat	d(151);
+	
 	return (0);
 }

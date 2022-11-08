@@ -12,43 +12,38 @@
 
 #include "Bureaucrat.hpp"
 
-// void MyFunc(int c)
-// {
-// 	if (c > numeric_limits< char> ::max())
-// 		throw invalid_argument("MyFunc argument too large.");
-// 	//...
-// }
-
-// int main()
-// {
-// 	try
-// 	{
-// 		MyFunc(256); //cause an exception to throw
-// 	}
-
-// 	catch (invalid_argument& e)
-// 	{
-// 		cerr << e.what() << endl;
-// 		return -1;
-// 	}
-// 	//...
-// 	return 0;
-// }
-
-Bureaucrat::Bureaucrat(void) : _grade(0)
+Bureaucrat::Bureaucrat(void) : _grade(150)
 {
 	std::cout << "Animal : Default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(int grade) : _grade(_grade)
+Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(150)
 {
-	std::cout << "Animal : Int constructor called" << std::endl;
-	// ici
+	std::cout << "Animal : String constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+Bureaucrat::Bureaucrat(int grade) : _grade(grade)
+{
+	std::cout << "Animal : Int constructor called" << std::endl;
+	try
+	{
+		if (grade < 1)
+			throw ("Grade too high.");
+	}
+	catch (std::string str)
+	{
+		std::cout << str << std::endl;
+	}
+	// if (grade > 150)
+	// 	throw (GradeTooLowException);
+	// catch (GradeTooLowException)
+	// 	std::cout << "Grade too low." << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name)
 {
 	std::cout << "Animal : Copy constructor called" << std::endl;
+	*this = copy;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -59,6 +54,8 @@ Bureaucrat::~Bureaucrat()
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &copy)
 {
 	std::cout << "Animal : Assignment operator called" << std::endl;
+	this->_grade = copy._grade;
+	return (*this);
 }
 
 std::string	Bureaucrat::getName(void)
