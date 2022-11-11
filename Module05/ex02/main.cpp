@@ -10,49 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main(void)
 {
 	try
 	{
-		Bureaucrat	a(1);
-		std::cout << a << std::endl;
-		a.increment();
-		std::cout << a << std::endl;
+		PresidentialPardonForm	a("a1");
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cerr << std::endl;
 	try
 	{
-		Bureaucrat	b;
-		std::cout << b << std::endl;
-		b.decrement();
-		std::cout << b << std::endl;
+		RobotomyRequestForm	b("b2");
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cerr << std::endl;
 	try
 	{
-		Bureaucrat	c(0);
-		std::cout << c << std::endl;
+		ShrubberyCreationForm	c("c3");
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	try
-	{
-		Bureaucrat	d(151);
-		std::cout << d << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	std::cerr << std::endl;
 	return (0);
 }

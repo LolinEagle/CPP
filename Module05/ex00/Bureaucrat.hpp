@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <exception>
 
 class Bureaucrat
 {
@@ -29,9 +30,23 @@ class Bureaucrat
 		~Bureaucrat();
 		Bureaucrat	&operator=(const Bureaucrat &copy);
 
+		// Exception
+		class GradeTooHighException : public std::exception
+		{
+			const char	*what() const throw ();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			const char	*what() const throw ();
+		};
+
 		// Function
-		std::string	getName(void);
-		int			getGrade(void);
+		std::string	getName(void) const;
+		int			getGrade(void) const;
+		void		increment(void);
+		void		decrement(void);
 };
+
+std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object);
 
 #endif

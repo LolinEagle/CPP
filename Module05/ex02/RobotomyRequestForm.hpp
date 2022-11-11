@@ -10,4 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
+#include "Form.hpp"
+
+// • RobotomyRequestForm (formulaire de demande de robotomie) :
+// Échelons requis : signature 72, exécution 45
+// Fait des bruits de perceuse. Ensuite, informe que la <target> a été robotomisée
+// avec succès 50% du temps. Dans le cas contraire, informe que l’opération a échoué.
+class RobotomyRequestForm : public AForm
+{
+	private:
+		std::string	_target;
+	public:
+		// Constructor & Destructor
+		RobotomyRequestForm(void);
+		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm &copy);
+		~RobotomyRequestForm();
+		RobotomyRequestForm	&operator=(const RobotomyRequestForm &copy);
+
+		// Exception
+
+		// Function
+		void	execute(Bureaucrat const & executor) const;
+};
+
+#endif

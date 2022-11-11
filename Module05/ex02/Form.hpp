@@ -19,7 +19,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string	_name;
@@ -28,11 +28,11 @@ class Form
 		const int			_gradeExecuting;
 	public:
 		// Constructor & Destructor
-		Form(void);
-		Form(std::string name, bool signed_, int gradeSign, int gradeExecuting);
-		Form(const Form &copy);
-		~Form();
-		Form	&operator=(const Form &copy);
+		AForm(void);
+		AForm(std::string name, bool signed_, int gradeSign, int gradeExecuting);
+		AForm(const AForm &copy);
+		~AForm();
+		AForm	&operator=(const AForm &copy);
 
 		// Exception
 		class GradeTooHighException : public std::exception
@@ -52,7 +52,6 @@ class Form
 		void				beSigned(const Bureaucrat &b);
 };
 
-std::ostream	&operator<<(std::ostream &stream, const Form &object);
+std::ostream	&operator<<(std::ostream &stream, const AForm &object);
 
 #endif
-

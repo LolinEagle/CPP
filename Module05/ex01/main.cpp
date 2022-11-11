@@ -11,48 +11,51 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
+	Bureaucrat	a(1);
+	Bureaucrat	b(150);
+
+	std::cerr << std::endl;
 	try
 	{
-		Bureaucrat	a(1);
-		std::cout << a << std::endl;
-		a.increment();
-		std::cout << a << std::endl;
+		Form	c("\"Increase the number of ducks\"", 0, 151, 151);
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cerr << std::endl;
 	try
 	{
-		Bureaucrat	b;
-		std::cout << b << std::endl;
-		b.decrement();
-		std::cout << b << std::endl;
+		Form	d("\"Increase the number of ducks\"", 0, 0, 0);
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cerr << std::endl;
 	try
 	{
-		Bureaucrat	c(0);
-		std::cout << c << std::endl;
+		Form	x("\"Increase the number of ducks\"", 0, 150, 150);
+		x.beSigned(a);
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cerr << std::endl;
 	try
 	{
-		Bureaucrat	d(151);
-		std::cout << d << std::endl;
+		Form	y("\"Increase the number of ducks\"", 0, 1, 1);
+		y.beSigned(b);
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cerr << std::endl;
 	return (0);
 }
