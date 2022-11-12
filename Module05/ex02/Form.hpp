@@ -31,7 +31,7 @@ class AForm
 		AForm(void);
 		AForm(std::string name, bool signed_, int gradeSign, int gradeExecuting);
 		AForm(const AForm &copy);
-		~AForm();
+		virtual ~AForm();
 		AForm	&operator=(const AForm &copy);
 
 		// Exception
@@ -43,6 +43,10 @@ class AForm
 		{
 			const char	*what() const throw ();
 		};
+		class UnsignedException : public std::exception
+		{
+			const char	*what() const throw ();
+		};
 
 		// Function
 		const std::string	getName(void) const;
@@ -50,6 +54,7 @@ class AForm
 		int					getGradeSign(void) const;
 		int					getGradeExecuting(void) const;
 		void				beSigned(const Bureaucrat &b);
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream	&operator<<(std::ostream &stream, const AForm &object);

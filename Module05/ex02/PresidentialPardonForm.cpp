@@ -12,17 +12,17 @@
 
 #include "PresidentialPardonForm.hpp"
 
-#define SIGN 145
-#define EXEC 137
+#define SIGN 25
+#define EXEC 5
 
 PresidentialPardonForm::PresidentialPardonForm(void) :
-AForm("Form", 0, SIGN, EXEC), _target("nobody")
+AForm("PresidentialPardonForm", 0, SIGN, EXEC), _target("nobody")
 {
 	std::cout << "PresidentialPardonForm : Default constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) :
-AForm("Form", 0, SIGN, EXEC), _target(target)
+AForm("PresidentialPardonForm", 0, SIGN, EXEC), _target(target)
 {
 	std::cout << "PresidentialPardonForm : String constructor called" << std::endl;
 }
@@ -46,7 +46,8 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void	execute(Bureaucrat const & executor) const
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	
+	AForm::execute(executor);
+	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox !" << std::endl;
 }

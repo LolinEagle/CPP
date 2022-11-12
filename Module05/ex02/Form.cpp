@@ -58,6 +58,11 @@ const char	*AForm::GradeTooLowException::what() const throw()
 	return ("Error : Grade too low !");
 }
 
+const char	*AForm::UnsignedException::what() const throw()
+{
+	return ("Error : Unsigned form exception !");
+}
+
 const std::string	AForm::getName(void) const
 {
 	return (this->_name);
@@ -80,11 +85,18 @@ int					AForm::getGradeExecuting(void) const
 
 void				AForm::beSigned(const Bureaucrat &b)
 {
-	if (b.getGrade() <= _gradeSign && b.getGrade() <= _gradeExecuting)
+	if (b.getGrade() <= _gradeSign)
 		this->_signed = 1;
 	else
 		throw (GradeTooLowException());
-	b.signForm(*this);
+}
+
+void	AForm::execute(Bureaucrat const & executor) const
+{
+	if (getSigned() == 0)
+		throw (UnsignedException());
+	else if (executor.getGrade() > getGradeExecuting())
+		throw (GradeTooLowException());
 }
 
 std::ostream	&operator<<(std::ostream &stream, const AForm &object)

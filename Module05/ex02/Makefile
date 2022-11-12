@@ -27,7 +27,7 @@ ${NAME}:${OBJS}
 all:${NAME}
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} *_shrubbery
 
 fclean:clean
 	${RM} ${NAME}

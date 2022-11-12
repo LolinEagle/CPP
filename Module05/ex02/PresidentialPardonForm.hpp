@@ -15,10 +15,9 @@
 
 #include "Form.hpp"
 
-// • ShrubberyCreationForm (formulaire de création d’arbustes) :
-// Échelons requis : signature 145, exécution 137
-// Créé un fichier <target>_shrubbery dans le répertoire courant, et écrit des arbres
-// ASCII à l’intérieur.
+// • PresidentialPardonForm (formulaire de pardon présidentiel) :
+// Échelons requis : signature 25, exécution 5
+// Informe que la <target> a été pardonnée par Zaphod Beeblebrox.
 class PresidentialPardonForm : public AForm
 {
 	private:
@@ -30,8 +29,6 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm(const PresidentialPardonForm &copy);
 		~PresidentialPardonForm();
 		PresidentialPardonForm	&operator=(const PresidentialPardonForm &copy);
-
-		// Exception
 
 		// Function
 		void	execute(Bureaucrat const & executor) const;

@@ -16,13 +16,13 @@
 #define EXEC 45
 
 RobotomyRequestForm::RobotomyRequestForm(void) :
-AForm("Form", 0, SIGN, EXEC), _target("nobody")
+AForm("RobotomyRequestForm", 0, SIGN, EXEC), _target("nobody")
 {
 	std::cout << "RobotomyRequestForm : Default constructor called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) :
-AForm("Form", 0, SIGN, EXEC), _target(target)
+AForm("RobotomyRequestForm", 0, SIGN, EXEC), _target(target)
 {
 	std::cout << "RobotomyRequestForm : String constructor called" << std::endl;
 }
@@ -46,7 +46,13 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &c
 	return (*this);
 }
 
-void	execute(Bureaucrat const & executor) const
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	
+	AForm::execute(executor);
+	srand(time(NULL));
+	std::cout << "* Drill noises. *" << std::endl;
+	if (std::rand() % 2)
+		std::cout << _target << " is robotomized." << std::endl;
+	else
+		std::cout << "Robotomy fail." << std::endl;
 }

@@ -16,32 +16,45 @@
 
 int	main(void)
 {
+	Bureaucrat	b0("frrusso");// 150
+	Bureaucrat	b1(1);
+
+	std::cout << std::endl;
 	try
 	{
-		PresidentialPardonForm	a("a1");
+		PresidentialPardonForm	a("Francois");
+		a.beSigned(b1);
+		a.execute(b1);
+		a.execute(b0);
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cerr << std::endl;
+	std::cout << std::endl;
 	try
 	{
-		RobotomyRequestForm	b("b2");
+		RobotomyRequestForm	b("Dominique");
+		b.beSigned(b1);
+		b.execute(b1);
+		b.execute(b0);
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cerr << std::endl;
+	std::cout << std::endl;
 	try
 	{
-		ShrubberyCreationForm	c("c3");
+		ShrubberyCreationForm	c("Pierre");
+		c.beSigned(b1);
+		c.execute(b1);
+		c.execute(b0);
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cerr << std::endl;
+	std::cout << std::endl;
 	return (0);
 }

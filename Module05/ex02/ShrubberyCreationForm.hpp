@@ -14,10 +14,12 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "Form.hpp"
+#include <fstream>
 
-// • PresidentialPardonForm (formulaire de pardon présidentiel) :
-// Échelons requis : signature 25, exécution 5
-// Informe que la <target> a été pardonnée par Zaphod Beeblebrox.
+// • ShrubberyCreationForm (formulaire de création d’arbustes) :
+// Échelons requis : signature 145, exécution 137
+// Créé un fichier <target>_shrubbery dans le répertoire courant, et écrit des arbres
+// ASCII à l’intérieur.
 class ShrubberyCreationForm : public AForm
 {
 	private:
@@ -29,8 +31,6 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm(const ShrubberyCreationForm &copy);
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &copy);
-
-		// Exception
 
 		// Function
 		void	execute(Bureaucrat const & executor) const;

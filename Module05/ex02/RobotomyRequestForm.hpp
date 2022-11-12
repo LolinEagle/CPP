@@ -14,6 +14,7 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "Form.hpp"
+#include <cstdlib>
 
 // • RobotomyRequestForm (formulaire de demande de robotomie) :
 // Échelons requis : signature 72, exécution 45
@@ -30,9 +31,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm(const RobotomyRequestForm &copy);
 		~RobotomyRequestForm();
 		RobotomyRequestForm	&operator=(const RobotomyRequestForm &copy);
-
-		// Exception
-
+		
 		// Function
 		void	execute(Bureaucrat const & executor) const;
 };
