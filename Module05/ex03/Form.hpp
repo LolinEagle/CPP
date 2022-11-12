@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 12:09:21 by frrusso           #+#    #+#             */
-/*   Updated: 2022/11/07 12:09:22 by frrusso          ###   ########.fr       */
+/*   Created: 2022/11/08 13:31:00 by frrusso           #+#    #+#             */
+/*   Updated: 2022/11/08 13:31:06 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include <iostream>
 #include <exception>
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
 
-class Form;
+class Bureaucrat;
 
-class Bureaucrat
+class AForm
 {
 	private:
 		const std::string	_name;
-		int					_grade;
+		bool				_signed;
+		const int			_gradeSign;
+		const int			_gradeExecuting;
 	public:
 		// Constructor & Destructor
-		Bureaucrat(void);
-		Bureaucrat(std::string name);
-		Bureaucrat(int grade);
-		Bureaucrat(const Bureaucrat &copy);
-		~Bureaucrat();
-		Bureaucrat	&operator=(const Bureaucrat &copy);
+		AForm(void);
+		AForm(std::string name, bool signed_, int gradeSign, int gradeExecuting);
+		AForm(const AForm &copy);
+		virtual ~AForm();
+		AForm	&operator=(const AForm &copy);
 
 		// Exception
 		class GradeTooHighException : public std::exception
@@ -42,15 +43,20 @@ class Bureaucrat
 		{
 			const char	*what() const throw ();
 		};
+		class UnsignedException : public std::exception
+		{
+			const char	*what() const throw ();
+		};
 
 		// Function
-		std::string	getName(void) const;
-		int			getGrade(void) const;
-		void		increment(void);
-		void		decrement(void);
-		void		signForm(Form &f) const;
+		const std::string	getName(void) const;
+		bool				getSigned(void) const;
+		int					getGradeSign(void) const;
+		int					getGradeExecuting(void) const;
+		void				beSigned(const Bureaucrat &b);
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 };
 
-std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object);
+std::ostream	&operator<<(std::ostream &stream, const AForm &object);
 
 #endif
