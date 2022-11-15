@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int	main(void)
 {
@@ -22,34 +20,16 @@ int	main(void)
 	std::cout << std::endl;
 	try
 	{
-		PresidentialPardonForm	a("Francois");
-		a.beSigned(b1);
-		a.execute(b1);
-		a.execute(b0);
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		RobotomyRequestForm	b("Dominique");
-		b.beSigned(b1);
-		b.execute(b1);
-		b.execute(b0);
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		ShrubberyCreationForm	c("Pierre");
-		c.beSigned(b1);
-		c.execute(b1);
-		c.execute(b0);
+		Intern	someRandomIntern;
+		AForm	*rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		if (rrf)
+		{
+			rrf->beSigned(b1);
+			rrf->execute(b1);
+			rrf->execute(b0);
+			delete (rrf);
+		}
 	}
 	catch (const std::exception& e)
 	{
