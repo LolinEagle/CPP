@@ -52,20 +52,22 @@ AForm	*Intern::makeShrubberyCreationForm(std::string s2)
 
 AForm	*Intern::makeForm(std::string s1, std::string s2)
 {
-	int			i;
 	std::string	formType[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-	void*		(Intern::*fptr[3])(std::string) = {&Intern::makePresidentialPardonForm, &Intern::makeRobotomyRequestForm, &Intern::makeShrubberyCreationForm};
-	// AForm*		tmp;
+	AForm		*(Intern::*fptr[3])(std::string) = {
+					&Intern::makePresidentialPardonForm,
+					&Intern::makeRobotomyRequestForm,
+					&Intern::makeShrubberyCreationForm};
+	AForm*		tmp;
 
-	for (i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		if (s1 == formType[i])
 		{
 			std::cout << "Intern creates " << s1 << std::endl;
-			return (fptr(s2)[i]);
-
+			tmp = (this->*fptr[i])(s2);
+			return (tmp);
 		}
-	}
+	}	
 	std::cout << "Intern cannot creates " << s1 << std::endl;
 	return (NULL);
 }

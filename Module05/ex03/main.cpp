@@ -14,20 +14,19 @@
 
 int	main(void)
 {
-	Bureaucrat	b0("frrusso");// 150
-	Bureaucrat	b1(1);
+	Bureaucrat	b(1);
+	Intern		someRandomIntern;
+	AForm		*rrf;
 
 	std::cout << std::endl;
 	try
 	{
-		Intern	someRandomIntern;
-		AForm	*rrf;
+		rrf = someRandomIntern.makeForm("Buy Twitter", "Elon Musk");
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		if (rrf)
 		{
-			rrf->beSigned(b1);
-			rrf->execute(b1);
-			rrf->execute(b0);
+			rrf->beSigned(b);
+			rrf->execute(b);
 			delete (rrf);
 		}
 	}
