@@ -10,32 +10,41 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	a.out
-SRCS	=	main.cpp MyClass.cpp
-OBJS	=	${SRCS:.cpp=.o}
-DEPS	=	$(SRCS:.cpp=.d)
-CC		=	c++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
-INC		=	-I ./
-RM		=	rm -f
-
-.cpp.o:
-	${CC} ${FLAGS} -c $< -o $@ ${INC}
-
-${NAME}:${OBJS}
-	${CC} ${FLAGS} ${OBJS} -o ${NAME}
+NAME		=	a.out
+SRC			=	main.cpp MyClass.cpp
+CPP			=	c++
+CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MMD
+RM			=	rm -rf
+INC			=	-I ./
+SRC_PATH	=	./
+OBJ_PATH	=	./obj/
+OBJ_DIRS	=	${OBJ_PATH}
+OBJ			=	${addprefix ${OBJ_PATH},${SRC:.cpp=.o}}
+DEPS		=	${addprefix ${OBJ_PATH},${SRC:.cpp=.d}}
 
 all:${NAME}
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJ_PATH}
 
 fclean:clean
 	${RM} ${NAME}
 
-re:fclean all
+re:fclean
+	make all
 
 run:${NAME}
 	./${NAME}
 
-.PHONY: all clean fclean re run
+${OBJ_DIRS}:
+	mkdir ${OBJ_DIRS}
+
+${OBJ_PATH}%.o:${SRC_PATH}%.cpp
+	${CPP} ${CPPFLAGS} ${INC} -c $< -o $@
+
+${NAME}:${OBJ_DIRS} ${OBJ}
+	${CPP} ${OBJ} -o $@
+
+.PHONY:all clean fclean re run
+
+-include ${DEPS}

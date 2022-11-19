@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 14:51:46 by frrusso           #+#    #+#             */
-/*   Updated: 2022/11/16 14:51:49 by frrusso          ###   ########.fr       */
+/*   Created: 2022/11/16 14:13:16 by frrusso           #+#    #+#             */
+/*   Updated: 2022/11/16 14:13:18 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_HPP
-#define HEADER_HPP
+#include "MyClass.hpp"
 
-#include <iostream>
-
-#define RESET		"\033[0m"
-#define BLACK		"\033[30m"
-#define RED			"\033[31m"
-#define GREEN		"\033[32m"
-#define YELLOW		"\033[33m"
-#define BLUE		"\033[34m"
-#define MAGENTA		"\033[35m"
-#define CYAN		"\033[36m"
-
-#endif
+int	main(void)
+{
+	MyClass	a;
+	MyClass	b(a);
+	
+	for (int i = 0; i < 16; i++)
+	{
+		std::cout << RED << "Ar" << YELLOW << "c-" << GREEN << "en" << CYAN <<
+		"-c" << BLUE << "ie" << MAGENTA << "l!" << RESET << std::endl;
+	}
+	return (0);
+}
