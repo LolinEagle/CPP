@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	a.out
-SRC			=	main.cpp MyClass.cpp
+NAME		=	convert
+SRC			=	main.cpp Convert.cpp
 CPP			=	c++
 CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MMD
 RM			=	rm -rf
@@ -34,7 +34,9 @@ re:fclean
 	make all
 
 run:${NAME}
-	./${NAME}
+	./${NAME} 0
+	./${NAME} nan
+	./${NAME} 42.0f
 
 ${OBJ_PATH}%.o:${SRC_PATH}%.cpp
 	${CPP} ${CPPFLAGS} ${INC} -c $< -o $@
