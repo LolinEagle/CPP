@@ -18,21 +18,22 @@ Convert::Convert(void) : _c(0), _i(0), _f(0.0f), _d(0.0), _float(false)
 
 Convert::Convert(const std::string str)
 {
-	// Debug Init
-	*this = Convert();
-
 	// Exepetion
 	if (str.empty())
 	{
 		*this = Convert();
 		return ;
 	}
-	else if (str == "+inff" || str == "+inf" || str == "nanf" ||
-		str == "-inff" || str == "-inf" || str == "nan")
+	if (str == "-inff" || str == "+inff" || str == "nanf")
 	{
 		this->_float = true;
-		// ICI
-		std::cout << "exepetion" << std::endl;
+		convert_float(str);
+		return ;
+	}
+	if (str == "-inf" || str == "+inf" || str == "nan")
+	{
+		this->_float = true;
+		convert_double(str);
 		return ;
 	}
 	this->_float = false;
@@ -40,33 +41,20 @@ Convert::Convert(const std::string str)
 	// Type
 	if (is_char(str))
 	{
-		// is char and not a string
 		if (str.size() > 1)
 		{
 			std::cout << "Input is a string." << std::endl;
 			*this = Convert();
 			return ;
 		}
-		// ICI
-		std::cout << "char" << std::endl;
-		return ;
+		convert_char(str);
 	}
 	else if (is_int(str))
-	{
-		// ICI
-		std::cout << "int" << std::endl;
-	}
+		convert_int(str);
 	else if (is_float(str))
-	{
-		// ICI
-		std::cout << "float" << std::endl;
-	}
-	else// is_double
-	{
-		// ICI
-		std::cout << "double" << std::endl;
-	}
-	*this = Convert();
+		convert_float(str);
+	else
+		convert_double(str);
 }
 
 Convert::Convert(const Convert &copy)
@@ -138,17 +126,15 @@ bool	Convert::is_char(const std::string str)
 		if (is_in_string(str[i], ".,"))
 		{
 			j++;
-			if (j > 1 || i == 0)
-				return (true);
-			if (is_in_string(str[i - 1], DIGIT) == 0 || is_in_string(str[i + 1], DIGIT) == 0)
+			if (is_in_string(str[i - 1], DIGIT) == 0 ||
+				is_in_string(str[i + 1], DIGIT) == 0 || j > 1)
 				return (true);
 		}
 	}
 
 	// 4 : back = 'f' or number
-	std::cout << "str[str.size()]=\'" << str[str.size()] << '\'' << std::endl;
-	// if (is_in_string(str[str.size()], "f0123456789") == false)
-	// 	return (true);
+	if (is_in_string(str[str.size() - 1], "f0123456789") == false)
+		return (true);
 	
 	// 5 : is char or string
 	return (false);
@@ -166,7 +152,31 @@ bool	Convert::is_int(const std::string str)
 
 bool	Convert::is_float(const std::string str)
 {
-	if (str[str.size()] == 'f')
+	if (str[str.size() - 1] == 'f')
 		return (true);
 	return (false);
+}
+
+void	Convert::convert_char(const std::string str)
+{
+	(void)str;
+	*this = Convert();
+}
+
+void	Convert::convert_int(const std::string str)
+{
+	(void)str;
+	*this = Convert();
+}
+
+void	Convert::convert_float(const std::string str)
+{
+	(void)str;
+	*this = Convert();
+}
+
+void	Convert::convert_double(const std::string str)
+{
+	(void)str;
+	*this = Convert();
 }

@@ -34,6 +34,7 @@ re:fclean
 	make all
 
 run:${NAME}
+	./${NAME} c
 	./${NAME} 0
 	./${NAME} nan
 	./${NAME} 42.0f

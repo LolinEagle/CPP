@@ -32,6 +32,10 @@ class Convert
 		bool	is_char(const std::string str);
 		bool	is_int(const std::string str);
 		bool	is_float(const std::string str);
+		void	convert_char(const std::string str);
+		void	convert_int(const std::string str);
+		void	convert_float(const std::string str);
+		void	convert_double(const std::string str);
 	public:
 		// Constructor & Destructor
 		Convert(void);
