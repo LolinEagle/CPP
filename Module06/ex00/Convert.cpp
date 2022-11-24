@@ -16,14 +16,11 @@ Convert::Convert(void) : _c(0), _i(0), _f(0.0f), _d(0.0), _float(false)
 {
 }
 
-Convert::Convert(const std::string str)
+Convert::Convert(const std::string str) : _c(0), _i(0), _f(0.0f), _d(0.0), _float(false)
 {
 	// Exepetion
 	if (str.empty())
-	{
-		*this = Convert();
 		return ;
-	}
 	if (str == "-inff" || str == "+inff" || str == "nanf")
 	{
 		this->_float = true;
@@ -44,7 +41,6 @@ Convert::Convert(const std::string str)
 		if (str.size() > 1)
 		{
 			std::cout << "Input is a string." << std::endl;
-			*this = Convert();
 			return ;
 		}
 		convert_char(str);
@@ -126,8 +122,8 @@ bool	Convert::is_char(const std::string str)
 		if (is_in_string(str[i], ".,"))
 		{
 			j++;
-			if (is_in_string(str[i - 1], DIGIT) == 0 ||
-				is_in_string(str[i + 1], DIGIT) == 0 || j > 1)
+			if (is_in_string(str[i - 1], DIGIT) == false ||
+				is_in_string(str[i + 1], DIGIT) == false || j > 1)
 				return (true);
 		}
 	}
@@ -159,24 +155,32 @@ bool	Convert::is_float(const std::string str)
 
 void	Convert::convert_char(const std::string str)
 {
-	(void)str;
-	*this = Convert();
+	this->_c = str[0];
+	this->_i = static_cast<int>(this->_c);
+	this->_f = static_cast<float>(this->_c);
+	this->_d = static_cast<double>(this->_c);
 }
 
 void	Convert::convert_int(const std::string str)
 {
-	(void)str;
-	*this = Convert();
+	this->_i = atoi(str.data());
+	this->_c = static_cast<char>(this->_i);
+	this->_f = static_cast<float>(this->_i);
+	this->_d = static_cast<double>(this->_i);
 }
 
 void	Convert::convert_float(const std::string str)
 {
-	(void)str;
-	*this = Convert();
+	this->_f = strtof(str.data(), NULL);
+	this->_c = static_cast<char>(this->_f);
+	this->_i = static_cast<int>(this->_f);
+	this->_d = static_cast<double>(this->_f);
 }
 
 void	Convert::convert_double(const std::string str)
 {
-	(void)str;
-	*this = Convert();
+	this->_d = strtod(str.data(), NULL);
+	this->_c = static_cast<char>(this->_d);
+	this->_i = static_cast<int>(this->_d);
+	this->_f = static_cast<float>(this->_d);
 }
