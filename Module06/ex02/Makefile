@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	convert
-SRC			=	main.cpp Convert.cpp
+NAME		=	type
+SRC			=	main.cpp Base.cpp
 CPP			=	c++
 CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MMD
 RM			=	rm -rf
@@ -34,15 +34,7 @@ re:fclean
 	make all
 
 run:${NAME}
-	./${NAME} c
-	./${NAME} " "
-	./${NAME} 0
-	./${NAME} 128
-	./${NAME} nanf
-	./${NAME} 42.0f
-	./${NAME} +inf;
-	./${NAME} 4.2
-	./${NAME} 2147483648
+	./${NAME}
 
 ${OBJ_PATH}%.o:${SRC_PATH}%.cpp
 	${CPP} ${CPPFLAGS} ${INC} -c $< -o $@

@@ -13,32 +13,40 @@
 #include "header.hpp"
 #include <stdint.h>
 
-typedef struct s_Data
+typedef struct s_data
 {
-	uintptr_t	_raw;
-}				Data;
+	int	i;
+}		Data;
 
-
-// Elle prend un pointeur et convertit celui-ci vers le type d’entier non-signé uintptr_t.
 uintptr_t	serialize(Data* ptr)
 {
-	(void)ptr;
-	return (0);
+	return (reinterpret_cast<uintptr_t>(ptr));
 }
 
-// Elle prend un entier non-signé en paramètre et le convertit en pointeur sur Data.
 Data		*deserialize(uintptr_t raw)
 {
-	(void)raw;
-	return (NULL);
+	return (reinterpret_cast<Data*>(raw));
 }
 
 int	main(void)
 {
-	Data		*ptr;
+	Data		*ptr1 = new Data;
+	Data		*ptr2;
 	uintptr_t	raw;
 
-	(void)ptr;
-	(void)raw;
+	try
+	{
+		ptr1->i = 1;
+		std::cout << "ptr1->i=" << ptr1->i << std::endl;
+		raw = serialize(ptr1);
+		std::cout << "raw=" << raw << std::endl;
+		ptr2 = deserialize(raw);
+		std::cout << "ptr2->i=" << ptr2->i << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "Exception: " << e.what();
+	}
+	delete (ptr1);
 	return (0);
 }

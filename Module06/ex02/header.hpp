@@ -14,7 +14,7 @@
 #define HEADER_HPP
 
 #include <iostream>
-#include <limits>
+#include <exception>
 #include <cstdlib>
 
 #define RESET	"\033[0m"

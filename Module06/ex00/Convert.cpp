@@ -12,15 +12,20 @@
 
 #include "Convert.hpp"
 
-Convert::Convert(void) : _c(0), _i(0), _f(0.0f), _d(0.0), _float(false)
+Convert::Convert(void) : _c('\0'), _i(0), _f(0.0f), _d(0.0),
+_float(false), _error(false)
 {
 }
 
-Convert::Convert(const std::string str) : _c(0), _i(0), _f(0.0f), _d(0.0), _float(false)
+Convert::Convert(const std::string str) : _c('\0'), _i(0), _f(0.0f), _d(0.0),
+_float(false), _error(false)
 {
 	// Exepetion
 	if (str.empty())
-		return ;
+	{
+		std::cout << RED << "Error: Your argument is empty." << RESET << std::endl;
+		this->_error = true;
+	}
 	if (str == "-inff" || str == "+inff" || str == "nanf")
 	{
 		this->_float = true;
@@ -40,7 +45,8 @@ Convert::Convert(const std::string str) : _c(0), _i(0), _f(0.0f), _d(0.0), _floa
 	{
 		if (str.size() > 1)
 		{
-			std::cout << "Input is a string." << std::endl;
+			std::cout << RED << "Error: Input is a string." << RESET << std::endl;
+			this->_error = true;
 			return ;
 		}
 		convert_char(str);
@@ -69,15 +75,18 @@ Convert	&Convert::operator=(const Convert &copy)
 	this->_f = copy._f;
 	this->_d = copy._c;
 	this->_float = copy._float;
+	this->_error = copy._error;
 	return (*this);
 }
 
 void	Convert::display(void)
 {
+	if (_error)
+		return ;
 	if (this->_float == true)
 		std::cout << BLUE << "char: impossible" << RESET << std::endl;
 	else if (isprint(this->_c))
-		std::cout << BLUE << "char: " << this->_c << RESET << std::endl;
+		std::cout << BLUE << "char: \'" << this->_c << "\'"<< RESET << std::endl;
 	else
 		std::cout << BLUE << "char: Non displayable" << RESET << std::endl;
 	if (this->_float == true)
@@ -129,7 +138,9 @@ bool	Convert::is_char(const std::string str)
 	}
 
 	// 4 : back = 'f' or number
-	if (is_in_string(str[str.size() - 1], "f0123456789") == false)
+	if (is_in_string(str[i], "f0123456789") == false)
+		return (true);
+	if (str[i] == 'f' && j != 1)
 		return (true);
 	
 	// 5 : is char or string

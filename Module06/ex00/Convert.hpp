@@ -26,6 +26,7 @@ class Convert
 		float	_f;
 		double	_d;
 		bool	_float;
+		bool	_error;
 
 		// Function
 		bool	is_in_string(char c, const std::string str);
