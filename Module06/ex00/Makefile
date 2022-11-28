@@ -34,15 +34,19 @@ re:fclean
 	make all
 
 run:${NAME}
+	clear
+	./${NAME} Bonjour ""
 	./${NAME} c
 	./${NAME} " "
+	./${NAME} "~"
 	./${NAME} 0
 	./${NAME} 128
-	./${NAME} nanf
-	./${NAME} 42.0f
-	./${NAME} +inf;
-	./${NAME} 4.2
 	./${NAME} 2147483648
+	./${NAME} -2147483648
+	./${NAME} 42.0f
+	./${NAME} nanf
+	./${NAME} 4.2
+	./${NAME} +inf
 
 ${OBJ_PATH}%.o:${SRC_PATH}%.cpp
 	${CPP} ${CPPFLAGS} ${INC} -c $< -o $@

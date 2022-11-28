@@ -25,17 +25,26 @@ _float(false), _error(false)
 	{
 		std::cout << RED << "Error: Your argument is empty." << RESET << std::endl;
 		this->_error = true;
+		return ;
 	}
 	if (str == "-inff" || str == "+inff" || str == "nanf")
 	{
+		double	d = strtod(str.data(), NULL);
+
+		std::cout << "type: float." << std::endl;
+		this->_f = static_cast<float>(d);
+		this->_d = static_cast<double>(d);
 		this->_float = true;
-		convert_float(str);
 		return ;
 	}
 	if (str == "-inf" || str == "+inf" || str == "nan")
 	{
+		float	f = strtof(str.data(), NULL);
+
+		std::cout << "type: double." << std::endl;
+		this->_f = static_cast<float>(f);
+		this->_d = static_cast<double>(f);
 		this->_float = true;
-		convert_double(str);
 		return ;
 	}
 	this->_float = false;
@@ -81,7 +90,7 @@ Convert	&Convert::operator=(const Convert &copy)
 
 void	Convert::display(void)
 {
-	if (_error)
+	if (this->_error)
 		return ;
 	if (this->_float == true)
 		std::cout << BLUE << "char: impossible" << RESET << std::endl;
@@ -126,7 +135,7 @@ bool	Convert::is_char(const std::string str)
 
 	// 3 : only one ".," (0.0) or number
 	int	j = 0;
-	for (i = 1; str[i + 1]; i++)
+	for (i = 0; str[i + 1]; i++)
 	{
 		if (is_in_string(str[i], ".,"))
 		{
@@ -142,7 +151,7 @@ bool	Convert::is_char(const std::string str)
 		return (true);
 	if (str[i] == 'f' && j != 1)
 		return (true);
-	
+
 	// 5 : is char or string
 	return (false);
 }
@@ -166,6 +175,7 @@ bool	Convert::is_float(const std::string str)
 
 void	Convert::convert_char(const std::string str)
 {
+	std::cout << "type: char." << std::endl;
 	this->_c = str[0];
 	this->_i = static_cast<int>(this->_c);
 	this->_f = static_cast<float>(this->_c);
@@ -174,24 +184,57 @@ void	Convert::convert_char(const std::string str)
 
 void	Convert::convert_int(const std::string str)
 {
-	this->_i = atoi(str.data());
-	this->_c = static_cast<char>(this->_i);
-	this->_f = static_cast<float>(this->_i);
-	this->_d = static_cast<double>(this->_i);
+	long double	ld = strtold(str.data(), NULL);
+
+	std::cout << "type: int." << std::endl;
+	if (ld < std::numeric_limits<char>::min() || ld > std::numeric_limits<char>::max())
+		std::cout << YELLOW << "Warning: char overflow." << RESET << std::endl;
+	this->_c = static_cast<char>(ld);
+	if (ld < std::numeric_limits<int>::min() || ld > std::numeric_limits<int>::max())
+		std::cout << YELLOW << "Warning: int overflow." << RESET << std::endl;
+	this->_i = static_cast<int>(ld);
+	if (ld < -FLT_MAX || ld > std::numeric_limits<float>::max())
+		std::cout << YELLOW << "Warning: float overflow." << RESET << std::endl;
+	this->_f = static_cast<float>(ld);
+	if (ld < -DBL_MAX || ld > std::numeric_limits<double>::max())
+		std::cout << YELLOW << "Warning: double overflow." << RESET << std::endl;
+	this->_d = static_cast<double>(ld);
 }
 
 void	Convert::convert_float(const std::string str)
 {
-	this->_f = strtof(str.data(), NULL);
-	this->_c = static_cast<char>(this->_f);
-	this->_i = static_cast<int>(this->_f);
-	this->_d = static_cast<double>(this->_f);
+	long double	ld = strtold(str.data(), NULL);
+
+	std::cout << "type: float." << std::endl;
+	if (ld < std::numeric_limits<char>::min() || ld > std::numeric_limits<char>::max())
+		std::cout << YELLOW << "Warning: char overflow." << RESET << std::endl;
+	this->_c = static_cast<char>(ld);
+	if (ld < std::numeric_limits<int>::min() || ld > std::numeric_limits<int>::max())
+		std::cout << YELLOW << "Warning: int overflow." << RESET << std::endl;
+	this->_i = static_cast<int>(ld);
+	if (ld < -FLT_MAX || ld > std::numeric_limits<float>::max())
+		std::cout << YELLOW << "Warning: float overflow." << RESET << std::endl;
+	this->_f = static_cast<float>(ld);
+	if (ld < -DBL_MAX || ld > std::numeric_limits<double>::max())
+		std::cout << YELLOW << "Warning: double overflow." << RESET << std::endl;
+	this->_d = static_cast<double>(ld);
 }
 
 void	Convert::convert_double(const std::string str)
 {
-	this->_d = strtod(str.data(), NULL);
-	this->_c = static_cast<char>(this->_d);
-	this->_i = static_cast<int>(this->_d);
-	this->_f = static_cast<float>(this->_d);
+	long double	ld = strtold(str.data(), NULL);
+
+	std::cout << "type: double." << std::endl;
+	if (ld < std::numeric_limits<char>::min() || ld > std::numeric_limits<char>::max())
+		std::cout << YELLOW << "Warning: char overflow." << RESET << std::endl;
+	this->_c = static_cast<char>(ld);
+	if (ld < std::numeric_limits<int>::min() || ld > std::numeric_limits<int>::max())
+		std::cout << YELLOW << "Warning: int overflow." << RESET << std::endl;
+	this->_i = static_cast<int>(ld);
+	if (ld < -FLT_MAX || ld > std::numeric_limits<float>::max())
+		std::cout << YELLOW << "Warning: float overflow." << RESET << std::endl;
+	this->_f = static_cast<float>(ld);
+	if (ld < -DBL_MAX || ld > std::numeric_limits<double>::max())
+		std::cout << YELLOW << "Warning: double overflow." << RESET << std::endl;
+	this->_d = static_cast<double>(ld);
 }

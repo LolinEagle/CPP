@@ -16,6 +16,7 @@
 #include <iostream>
 #include <limits>
 #include <cstdlib>
+#include <cfloat>
 
 #define RESET	"\033[0m"
 #define BLACK	"\033[30m"
