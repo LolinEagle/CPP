@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	a.out
-SRC			=	main.cpp MyClass.cpp
+NAME		=	array
+SRC			=	main.cpp
 CPP			=	c++
 CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MMD
 RM			=	rm -rf
@@ -35,7 +35,7 @@ re:fclean
 
 run:${NAME}
 	clear
-	./${NAME}
+	valgrind ./${NAME}
 
 ${OBJ_PATH}%.o:${SRC_PATH}%.cpp
 	${CPP} ${CPPFLAGS} ${INC} -c $< -o $@

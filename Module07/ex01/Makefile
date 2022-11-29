@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	a.out
-SRC			=	main.cpp MyClass.cpp
+NAME		=	iter
+SRC			=	main.cpp
 CPP			=	c++
 CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MMD
 RM			=	rm -rf

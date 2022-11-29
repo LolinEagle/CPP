@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME		=	a.out
-SRC			=	main.cpp MyClass.cpp
+SRC			=	main.cpp
 CPP			=	c++
 CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MMD
 RM			=	rm -rf
