@@ -31,12 +31,25 @@ class Array
 
 		// Operator overload
 		Array<T>	&operator=(const Array<T> &copy);
-		
+		T			&operator[](unsigned int i);
+
+		// Exception
+		class BadIndex : public std::exception
+		{
+			const char	*what() const throw ()
+			{
+				return ("Error : Bad Index !");
+			}
+		};
+
 		// Function
+		void			tab(void);
+		unsigned int	size(void);
+		unsigned int	getsize(void);
 };
 
 template<typename T>
-Array<T>::Array(void) : _tab(new T[0]), _size(0)
+Array<T>::Array(void) : _tab(NULL), _size(0)
 {
 	std::cout << BLUE << "Array : Default Constructor called" << RESET << std::endl;
 }
@@ -45,6 +58,8 @@ template<typename T>
 Array<T>::Array(unsigned int n) : _tab(new T[n]), _size(n)
 {
 	std::cout << BLUE << "Array : Unsigned int constructor called" << RESET << std::endl;
+	for (unsigned int i = 0; i < n; i++)
+		_tab[i] = 0;
 }
 
 template<typename T>
@@ -74,23 +89,39 @@ Array<T>	&Array<T>::operator=(const Array<T> &copy)
 	return (*this);
 }
 
+template<typename T>
+T			&Array<T>::operator[](unsigned int i)
+{
+	if (i >= _size)
+		throw (BadIndex());
+	return (_tab[i]);
+}
+
+template<typename T>
+void			Array<T>::tab(void)
+{
+	for (unsigned int i = 0; _tab[i] && i < _size; i++)
+	{
+		if (i % 2 == 0)
+			std::cout << MAGENTA << "[" << i << "]=" << _tab[i] << RESET << std::endl;
+		else
+			std::cout << YELLOW << "[" << i << "]=" << _tab[i] << RESET << std::endl;
+	}
+}
+
+template<typename T>
+unsigned int	Array<T>::size(void)
+{
+	unsigned int i;
+	for (i = 0; _tab[i] && i < _size; i++)
+		i++;
+	return (i);
+}
+
+template<typename T>
+unsigned int	Array<T>::getsize(void)
+{
+	return (_size);
+}
+
 #endif
-
-// • Construction par recopie et surcharge de l’opérateur d’affectation. Dans les deux
-// cas, après une copie, toute modification de l’array original ou de sa copie ne doit
-// pas impacter l’autre array.
-
-// • Vous DEVEZ utiliser l’opérateur new[] pour allouer de la mémoire. Toute allocation préventive
-// (c’est-à-dire allouer de la mémoire en avance) est interdite. Votre
-// programme ne doit pas pouvoir accéder à une zone non allouée.
-
-// • Les éléments doivent être accessibles grâce à l’opérateur d’indice : [ ].
-
-// • En cas d’index invalide lors d’une tentative d’accès d’un élément en utilisant l’opérateur [ ],
-// une std::exception est jetée.
-
-// • Une fonction membre size() qui retourne le nombre d’éléments dans l’array. Cette
-// fonction membre ne prend aucun paramètre et ne doit pas modifier l’instance courante.
-
-// Comme d’habitude, assurez-vous que tout fonctionne comme attendu et rendez un
-// fichier main.cpp contenant vos tests.
