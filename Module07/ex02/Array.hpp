@@ -43,9 +43,9 @@ class Array
 		};
 
 		// Function
-		void			tab(void);
-		unsigned int	size(void);
-		unsigned int	getsize(void);
+		void			tab(void) const;
+		unsigned int	size(void) const;
+		unsigned int	getsize(void) const;
 };
 
 template<typename T>
@@ -98,8 +98,10 @@ T			&Array<T>::operator[](unsigned int i)
 }
 
 template<typename T>
-void			Array<T>::tab(void)
+void			Array<T>::tab(void) const
 {
+	if (_tab == NULL)
+		return ;
 	for (unsigned int i = 0; _tab[i] && i < _size; i++)
 	{
 		if (i % 2 == 0)
@@ -110,16 +112,18 @@ void			Array<T>::tab(void)
 }
 
 template<typename T>
-unsigned int	Array<T>::size(void)
+unsigned int	Array<T>::size(void) const
 {
-	unsigned int i;
-	for (i = 0; _tab[i] && i < _size; i++)
+	if (_tab == NULL)
+		return (0);
+	unsigned int i = 0;
+	while (_tab[i] && i < _size)
 		i++;
 	return (i);
 }
 
 template<typename T>
-unsigned int	Array<T>::getsize(void)
+unsigned int	Array<T>::getsize(void) const
 {
 	return (_size);
 }

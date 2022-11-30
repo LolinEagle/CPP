@@ -15,7 +15,6 @@
 
 #include "header.hpp"
 
-// • swap : Intervertit les valeurs de deux arguments donnés. Ne retourne rien.
 template<typename T>
 void	swap(T &x, T &y)
 {
@@ -24,8 +23,6 @@ void	swap(T &x, T &y)
 	y = z;
 }
 
-// • min : Compare les deux valeurs passées en argument et retourne la plus petite des deux.
-// Si les deux sont équivalentes, alors retourne la seconde.
 template<typename T>
 T	min(T x, T y)
 {
@@ -35,8 +32,6 @@ T	min(T x, T y)
 		return (x);
 }
 
-// • max : Compare les deux valeurs passées en argument et retourne la plus grande des deux.
-// Si les deux sont équivalentes, alors retourne la seconde.
 template<typename T>
 T	max(T x, T y)
 {
