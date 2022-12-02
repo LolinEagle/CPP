@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 16:12:18 by frrusso           #+#    #+#             */
-/*   Updated: 2022/11/28 16:12:20 by frrusso          ###   ########.fr       */
+/*   Created: 2022/11/16 14:13:16 by frrusso           #+#    #+#             */
+/*   Updated: 2022/11/16 14:13:18 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-#define WHATEVER_HPP
+#include <easyfind.hpp>
 
-#include "header.hpp"
+#define SIZE 8
 
-template<typename T>
-void	swap(T &x, T &y)
+int	main(void)
 {
-	T	z = x;
-	x = y;
-	y = z;
-}
+	std::vector<int> first;
+  	std::vector<int> second(SIZE);
 
-template<typename T>
-T		min(T const &x, T const &y)
-{
-	if (y < x || y == x)
-		return (y);
-	else
-		return (x);
+	for (size_t i = 0; i < SIZE; i++)
+		second[i] = i + 1;
+	for (size_t i = 0; i < SIZE; i++)
+		std::cout << "second[" << i << "]=" << second[i] << std::endl;
+	try
+	{
+		easyfind(second, 3);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	return (0);
 }
-
-template<typename T>
-T		max(T const &x, T const &y)
-{
-	if (y > x || y == x)
-		return (y);
-	else
-		return (x);
-}
-
-#endif

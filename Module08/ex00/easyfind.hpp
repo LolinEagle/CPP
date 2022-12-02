@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frrusso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 16:12:18 by frrusso           #+#    #+#             */
-/*   Updated: 2022/11/28 16:12:20 by frrusso          ###   ########.fr       */
+/*   Created: 2022/12/02 15:11:42 by frrusso           #+#    #+#             */
+/*   Updated: 2022/12/02 15:11:44 by frrusso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-#define WHATEVER_HPP
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
 
 #include "header.hpp"
 
 template<typename T>
-void	swap(T &x, T &y)
+void	easyfind(T x, int y)
 {
-	T	z = x;
-	x = y;
-	y = z;
-}
-
-template<typename T>
-T		min(T const &x, T const &y)
-{
-	if (y < x || y == x)
-		return (y);
-	else
-		return (x);
-}
-
-template<typename T>
-T		max(T const &x, T const &y)
-{
-	if (y > x || y == x)
-		return (y);
-	else
-		return (x);
+	(void)x;
+	(void)y;
+	// throw ();
+	// return ();
 }
 
 #endif

@@ -101,7 +101,7 @@ void			Array<T>::tab(void) const
 {
 	if (_tab == NULL)
 		return ;
-	for (unsigned int i = 0; _tab[i] && i < _size; i++)
+	for (unsigned int i = 0; i < _size && _tab[i]; i++)
 	{
 		if (i % 2 == 0)
 			std::cout << MAGENTA << "[" << i << "]=" << _tab[i] << RESET << std::endl;
@@ -116,7 +116,7 @@ unsigned int	Array<T>::size(void) const
 	if (_tab == NULL)
 		return (0);
 	unsigned int i = 0;
-	while (_tab[i] && i < _size)
+	while (i < _size && _tab[i])
 		i++;
 	return (i);
 }

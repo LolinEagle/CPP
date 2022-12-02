@@ -81,7 +81,7 @@ int main(void)
 
 	try
 	{
-		for (unsigned int i = 0; i < 6; i++)
+		for (unsigned int i = 0; i < 8; i++)
 			B[i] = 'B';
 		B.tab();
 		std::cout << "B.size()=" << B.size() << std::endl;

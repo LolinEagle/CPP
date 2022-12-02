@@ -43,7 +43,7 @@ int	main(void)
 {
 	int		a[] = {66, 111, 110, 106, 111, 117, 114};
 	std::cout << RED;
-	iter(a, 8, ft_print);
+	iter(a, 7, ft_print);
 	std::cout << RESET << std::endl;
 
 	char	b[] = "Chaine0";
@@ -53,7 +53,7 @@ int	main(void)
 
 	float	c[] = {66.0f, 111.0f, 110.0f, 115.0f, 111.0f, 105.0f, 114.0f};
 	std::cout << BLUE;
-	iter(c, 8, ft_toupper);
+	iter(c, 7, ft_toupper);
 	std::cout << RESET << std::endl;
 
 	return (0);
