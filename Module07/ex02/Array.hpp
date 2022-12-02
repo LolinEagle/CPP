@@ -82,9 +82,7 @@ Array<T>	&Array<T>::operator=(const Array<T> &copy)
 	std::cout << CYAN << "Array : Operator overload called" << RESET << std::endl;
 	_tab = new T[copy._size];
 	for (unsigned int i = 0; i < copy._size; i++)
-	{
 		_tab[i] = copy._tab[i];
-	}
 	_size = copy._size;
 	return (*this);
 }
@@ -94,7 +92,8 @@ T			&Array<T>::operator[](unsigned int i)
 {
 	if (i >= _size)
 		throw (BadIndex());
-	return (_tab[i]);
+	else
+		return (_tab[i]);
 }
 
 template<typename T>

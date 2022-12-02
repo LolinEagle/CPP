@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <Array.hpp>
 
 #define MAX_VAL 750
 
 int main(void)
 {
+	std::cout << GREEN << "Subject Test:" << RESET << std::endl;
+
 	Array<int>	numbers(MAX_VAL);
 	int			*mirror = new int[MAX_VAL];
 
@@ -27,7 +28,6 @@ int main(void)
 		numbers[i] = value;
 		mirror[i] = value;
 	}
-	// SCOPE
 	{
 		Array<int> tmp = numbers;
 		Array<int> test(tmp);
@@ -63,6 +63,8 @@ int main(void)
 		numbers[i] = rand();
 	}
 	delete [] mirror;
+
+	std::cout << GREEN << "My Test:" << RESET << std::endl;
 
 	Array<char> A;
 	Array<char> B(8);

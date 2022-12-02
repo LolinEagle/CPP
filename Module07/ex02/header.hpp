@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <exception>
 
 #define RESET	"\033[0m"
 #define BLACK	"\033[30m"

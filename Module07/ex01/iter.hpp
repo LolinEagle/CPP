@@ -16,12 +16,10 @@
 #include "header.hpp"
 
 template<typename T>
-void	iter(T *tab, int size, void (*f)(T const &))
+void	iter(T const *tab, int size, void (*ft)(T const &))
 {
 	for (int i = 0; i < size; i++)
-	{
-		f(tab[i]);
-	}
+		ft(tab[i]);
 }
 
 #endif

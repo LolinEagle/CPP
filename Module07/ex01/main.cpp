@@ -41,17 +41,17 @@ void	ft_toupper(T const &c)
 
 int	main(void)
 {
-	int		a[] = {66, 111, 110, 106, 111, 117, 114, 0};
+	int		a[] = {66, 111, 110, 106, 111, 117, 114};
 	std::cout << RED;
 	iter(a, 8, ft_print);
 	std::cout << RESET << std::endl;
 
-	char	b[] = "chaine1";
+	char	b[] = "Chaine0";
 	std::cout << GREEN;
-	iter(b, 8, ft_tolower);
+	iter(b, 7, ft_tolower);
 	std::cout << RESET << std::endl;
 
-	float	c[] = {66.0f, 111.0f, 110.0f, 115.0f, 111.0f, 105.0f, 114.0f, 0.0f};
+	float	c[] = {66.0f, 111.0f, 110.0f, 115.0f, 111.0f, 105.0f, 114.0f};
 	std::cout << BLUE;
 	iter(c, 8, ft_toupper);
 	std::cout << RESET << std::endl;
