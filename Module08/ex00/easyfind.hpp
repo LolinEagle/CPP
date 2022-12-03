@@ -13,15 +13,15 @@
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
-#include "header.hpp"
+#include <header.hpp>
 
 template<typename T>
-void	easyfind(T x, int y)
+typename T::iterator	easyfind(T container, int toFind)
 {
-	(void)x;
-	(void)y;
-	// throw ();
-	// return ();
+	typename T::iterator	it = find(container.begin(), container.end(), toFind);
+	if (it == container.end())
+		throw (std::exception());
+	return (it);
 }
 
 #endif

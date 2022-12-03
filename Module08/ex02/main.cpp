@@ -10,17 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <MyClass.hpp>
+#include <MutantStack.hpp>
 
 int	main(void)
 {
-	MyClass	a;
-	MyClass	b(a);
-	
-	for (int i = 0; i < 16; i++)
-	{
-		std::cout << RED << "Ar" << YELLOW << "c-" << GREEN << "en" << CYAN <<
-		"-c" << BLUE << "ie" << MAGENTA << "l!" << RESET << std::endl;
-	}
 	return (0);
 }

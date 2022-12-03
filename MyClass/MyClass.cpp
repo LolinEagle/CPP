@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MyClass.hpp"
+#include <MyClass.hpp>
 
 MyClass::MyClass(void)
 {
