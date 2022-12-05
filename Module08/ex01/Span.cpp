@@ -43,29 +43,50 @@ Span	&Span::operator=(const Span &copy)
 
 void	Span::addNumber(size_t N)
 {
+	if (_it == _tab.end())
+		throw (OutOfVector());
 	*_it = N;
 	_it++;
 }
 
-size_t	Span::shortestSpan(void)
+size_t	Span::shortestSpan(void) const
 {
-	std::sort(_tab.begin(), _tab.end());
-	if (_tab.size() < 2)
-		throw (std::exception());
-	return (0);
+	if (_N < 2)
+		throw (ComparisonNotPossible());
+	std::vector<size_t>	_tabCopy(_tab);
+	std::sort(_tabCopy.begin(), _tabCopy.end());
+	size_t	res = _tabCopy[1] - _tabCopy[0];
+	for (size_t i = 2; i < _N; i++)
+	{
+		if (res > _tabCopy[i] - _tabCopy[i - 1])
+			res = _tabCopy[i] - _tabCopy[i - 1];
+	}
+	return (res);
 }
 
-size_t	Span::longestSpan(void)
+size_t	Span::longestSpan(void) const
 {
-	std::sort(_tab.begin(), _tab.end());
-	if (_tab.size() < 2)
-		throw (std::exception());
-	return (_tab[_N - 1] - _tab[0]);
+	if (_N < 2)
+		throw (ComparisonNotPossible());
+	std::vector<size_t>	_tabCopy(_tab);
+	std::sort(_tabCopy.begin(), _tabCopy.end());
+	return (_tabCopy.back() - _tabCopy.front());
 }
 
-size_t	Span::getTab(size_t i)
+size_t	Span::getTab(size_t i) const
 {
 	if (i >= _N)
-		throw (std::exception());
+		throw (OutOfVector());
 	return (_tab[i]);
+}
+
+void	Span::addMultipleNumber(VECTOR_ITERATOR start, VECTOR_ITERATOR final)
+{
+	for (VECTOR_ITERATOR it = start; it < final; it++)
+	{
+		if (_it == _tab.end())
+			throw (OutOfVector());
+		*_it = *it;
+		_it++;
+	}
 }

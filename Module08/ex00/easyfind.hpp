@@ -15,12 +15,21 @@
 
 #include <header.hpp>
 
+// Exception
+class IndexNotFind : public std::exception
+{
+	const char	*what() const throw ()
+	{
+		return ("Error : Index not find.");
+	}
+};
+
 template<typename T>
 typename T::iterator	easyfind(T container, int toFind)
 {
 	typename T::iterator	it = find(container.begin(), container.end(), toFind);
 	if (it == container.end())
-		throw (std::exception());
+		throw (IndexNotFind());
 	return (it);
 }
 
