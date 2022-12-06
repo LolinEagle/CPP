@@ -35,7 +35,7 @@ re:fclean
 
 run:${NAME}
 	clear
-	./${NAME}
+	valgrind ./${NAME}
 
 ${OBJ_PATH}%.o:${SRC_PATH}%.cpp
 	${CPP} ${CPPFLAGS} ${INC} -c $< -o $@
