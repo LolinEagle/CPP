@@ -35,11 +35,11 @@ re:fclean
 
 run:${NAME}
 	clear
-	./${NAME}
+	./${NAME} file/input.txt
 
 debug:${NAME}
 	clear
-	valgrind ./${NAME}
+	valgrind ./${NAME} file/input.txt
 
 ${OBJ_PATH}%.o:${SRC_PATH}%.cpp
 	${CPP} ${CPPFLAGS} ${INC} -c $< -o $@

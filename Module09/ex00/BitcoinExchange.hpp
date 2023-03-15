@@ -13,20 +13,25 @@
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <header.hpp>
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <map>
+
+#define RED		"\033[31m"
+#define BLUE	"\033[34m"
+#define ENDL	"\033[0m" << std::endl;
 
 class BitcoinExchange
 {
 	private:
-		
+		std::map<std::string,double>	_data;
 	public:
 		/* Constructor & Destructor ***************************************** */
 		BitcoinExchange(void);
 		BitcoinExchange(const BitcoinExchange &copy);
-		~BitcoinExchange();
-
-		/* Operator overload ************************************************ */
 		BitcoinExchange	&operator=(const BitcoinExchange &copy);
+		~BitcoinExchange();
 		
 		/* Function ********************************************************* */
 };

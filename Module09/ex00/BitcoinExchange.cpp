@@ -15,6 +15,23 @@
 BitcoinExchange::BitcoinExchange(void)
 {
 	std::cout << BLUE << "BitcoinExchange : Default Constructor called" << ENDL;
+
+	std::ifstream	infile("file/data.csv");
+	if (infile.is_open() == false)
+	{
+		std::cout << "data.csv not found." << std::endl;
+		return ;
+	}
+
+	char	str[20];
+	infile.getline(str, 20);
+	for (int i = 0; i < 1611; i++)
+	{
+		infile.getline(str, 20);
+		_data.insert(std::pair<std::string,double>(
+			std::string(str, 10), atof(str + 11))
+		);
+	}
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
@@ -23,13 +40,13 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
 	*this = copy;
 }
 
+BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &copy)
+{
+	_data = copy._data;
+	return (*this);
+}
+
 BitcoinExchange::~BitcoinExchange()
 {
 	std::cout << RED << "BitcoinExchange : Destructor called" << ENDL;
-}
-
-BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &copy)
-{
-	(void)copy;
-	return (*this);
 }
