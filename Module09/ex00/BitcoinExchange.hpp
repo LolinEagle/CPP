@@ -14,7 +14,9 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <cctype>
 #include <cstdlib>
+#include <cstring>
 #include <fstream>
 #include <map>
 
@@ -34,6 +36,7 @@ class BitcoinExchange
 		~BitcoinExchange();
 		
 		/* Function ********************************************************* */
+		double	getData(std::string const &str) const;
 };
 
 #endif
