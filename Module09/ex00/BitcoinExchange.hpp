@@ -22,7 +22,7 @@
 
 #define RED		"\033[31m"
 #define BLUE	"\033[34m"
-#define ENDL	"\033[0m" << std::endl;
+#define ENDL	"\033[0m" << std::endl
 
 class BitcoinExchange
 {

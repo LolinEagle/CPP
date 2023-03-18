@@ -36,7 +36,7 @@ bool	parsing(char *str)
 int		main(int ac, char **av)
 {
 	if (ac < 2)
-		std::cout << "Error: could not open file." << std::endl;
+		std::cout << RED << "Error: could not open file." << ENDL;
 	else
 	{
 		BitcoinExchange	btc;
@@ -46,7 +46,7 @@ int		main(int ac, char **av)
 			std::ifstream	infile(av[i]);
 			if (infile.is_open() == false)
 			{
-				std::cout << av[i] << " not found." << std::endl;
+				std::cout << RED << av[i] << " not found." << ENDL;
 				continue ;
 			}
 
@@ -56,22 +56,23 @@ int		main(int ac, char **av)
 			{
 				if (parsing(str))
 				{
-					std::cout << "Error: bad input => " << str << std::endl;
+					std::cout << RED << "Error: bad input => " << str << ENDL;
 					continue ;
 				}
 				if (str[13] == '-')
 				{
-					std::cout << "Error: not a positive number." << std::endl;
+					std::cout << RED << "Error: not a positive number." << ENDL;
 					continue ;
 				}
 				double	n = atof(str + 13);
 				if (n > 1000)
 				{
-					std::cout << "Error: too large a number" << std::endl;
+					std::cout << RED << "Error: too large a number" << ENDL;
 					continue ;
 				}
 				std::string	date(str, 10);
-				std::cout << date << " => " << n << " = " << btc.getData(date) * n << std::endl;
+				std::cout << BLUE << date << " => " << n << " = " <<
+				btc.getData(date) * n << ENDL;
 			}
 		}
 	}

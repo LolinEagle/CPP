@@ -14,8 +14,6 @@
 
 BitcoinExchange::BitcoinExchange(void)
 {
-	std::cout << BLUE << "BitcoinExchange : Default Constructor called" << ENDL;
-
 	std::ifstream	infile("file/data.csv");
 	if (infile.is_open() == false)
 	{
@@ -35,7 +33,6 @@ BitcoinExchange::BitcoinExchange(void)
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
 {
-	std::cout << BLUE << "BitcoinExchange : Copy Constructor called" << ENDL;
 	*this = copy;
 }
 
@@ -47,7 +44,6 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &copy)
 
 BitcoinExchange::~BitcoinExchange()
 {
-	std::cout << RED << "BitcoinExchange : Destructor called" << ENDL;
 }
 
 double	BitcoinExchange::   getData(std::string const &str) const
@@ -68,9 +64,9 @@ double	BitcoinExchange::   getData(std::string const &str) const
 			return (_data.at(tmp));
 	}
 	i = atoi(day);
-	if (i < 31)
+	if (i > 2)
 	{
-		i++;
+		i -= 2;
 		tmp[8] = (i / 10) + '0';
 		tmp[9] = (i % 10) + '0';
 		std::map<std::string,double>::const_iterator	it = _data.find(tmp);

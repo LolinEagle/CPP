@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
-#include <cstdlib>
 #include <deque>
 #include <vector>
 
@@ -29,6 +28,9 @@ class PmergeMe
 	private:
 		std::deque<int>		_deque;
 		std::vector<int>	_vector;
+
+		void	merge_insert_sort_d(std::deque<int>& a, int left, int right);
+		void	merge_insert_sort_v(std::vector<int>& a, int left, int right);
 	public:
 		PmergeMe(void);
 		PmergeMe(char **av);

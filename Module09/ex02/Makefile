@@ -36,6 +36,9 @@ re:fclean
 run:${NAME}
 	clear
 	valgrind ./${NAME} 3 5 9 7 4
+	./${NAME} 3 5 9 7 4
+	./${NAME} `shuf -i 1-100000 -n 3000 | tr "\n" " "`
+	valgrind ./${NAME} "-1" "2"
 
 ${OBJ_PATH}%.o:${SRC_PATH}%.cpp
 	${CPP} ${CPPFLAGS} ${INC} -c $< -o $@
