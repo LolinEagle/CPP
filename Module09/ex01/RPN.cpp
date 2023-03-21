@@ -118,7 +118,13 @@ int	RPN::execute(void)
 			number_one = number_one + number_two;
 		if (operation == '-')
 			number_one = number_one - number_two;
-		if (operation == '/')
+		if (operation == '/' && number_two == 0)
+		{
+			std::cout << RED << "Error : Division by zero." << BLUE <<
+			std::endl;
+			return (number_one);
+		}
+		else if (operation == '/')
 			number_one = number_one / number_two;
 		if (operation == '*')
 			number_one = number_one * number_two;

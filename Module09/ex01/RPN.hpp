@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cctype>
+#include <list>
 #include <stack>
 
 #define RESET	"\033[0m" << std::endl
@@ -24,8 +25,8 @@
 class RPN
 {
 	private:
-		std::stack<char>	_numbers;
-		std::stack<char>	_operators;
+		std::stack<char, std::list<char> >	_numbers;
+		std::stack<char, std::list<char> >	_operators;
 
 		bool	isoperation(char c);
 		bool	isnext(char c);
