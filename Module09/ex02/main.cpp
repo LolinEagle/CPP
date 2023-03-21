@@ -15,11 +15,12 @@
 int	main(int ac, char **av)
 {
 	if (ac < 2)
-	{
 		std::cout << RED << "Error : no argument." << RESET;
-		return (0);
+	else
+	{
+		PmergeMe	pmerge_me(av);
+
+		pmerge_me.sort();
 	}
-	PmergeMe	pmerge_me(av);
-	pmerge_me.sort();
 	return (0);
 }

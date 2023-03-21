@@ -44,15 +44,17 @@ int		main(int ac, char **av)
 		for (int i = 1; i < ac; i++)
 		{
 			std::ifstream	infile(av[i]);
+
 			if (infile.is_open() == false)
 			{
 				std::cout << RED << av[i] << " not found." << ENDL;
 				continue ;
 			}
 
-			char	str[25];
-			infile.getline(str, 25);
-			while (infile.getline(str, 25))
+			char	str[64];
+
+			infile.getline(str, 64);
+			while (infile.getline(str, 64))
 			{
 				if (parsing(str))
 				{
@@ -64,13 +66,17 @@ int		main(int ac, char **av)
 					std::cout << RED << "Error: not a positive number." << ENDL;
 					continue ;
 				}
+
 				double	n = atof(str + 13);
+
 				if (n > 1000)
 				{
 					std::cout << RED << "Error: too large a number" << ENDL;
 					continue ;
 				}
+
 				std::string	date(str, 10);
+
 				std::cout << BLUE << date << " => " << n << " = " <<
 				btc.getData(date) * n << ENDL;
 			}

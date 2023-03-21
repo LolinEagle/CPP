@@ -26,14 +26,3 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
-
-// • The numbers used in this operation will always be less than 10.
-
-// • Your program must be able to handle operations with these tokens: "+ - / *".
-
-// $> ./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"
-// 42
-// $> ./RPN "7 7 * 7 -"
-// 42
-// $> ./RPN
-// Error

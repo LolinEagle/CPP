@@ -12,39 +12,91 @@
 
 #include <PmergeMe.hpp>
 
-void	PmergeMe::merge_insert_sort_d(std::deque<int>& a, int left, int right)
+void	PmergeMe::merge_insert_sort_d(std::deque<int>& d)
 {
-	if (left < right)
+	if (d.size() == 1)
+		return ;
+
+	std::deque<int>::iterator middle = d.begin() + (d.size() / 2);
+	std::deque<int> left(d.begin(), middle);
+	std::deque<int> right(middle, d.end());
+
+	merge_insert_sort_d(left);
+	merge_insert_sort_d(right);
+
+	std::deque<int>::iterator left_iter = left.begin();
+	std::deque<int>::iterator right_iter = right.begin();
+	std::deque<int>::iterator iter = d.begin();
+
+	while (left_iter != left.end() && right_iter != right.end())
 	{
-		int	mid = left + (right - left) / 2;
-		if (mid - left + 1 <= 32)
-			std::sort(a.begin() + left, a.begin() + mid + 1);
+		if (*left_iter <= *right_iter)
+		{
+			*iter = *left_iter;
+			left_iter++;
+		}
 		else
-			merge_insert_sort_d(a, left, mid);
-		if (right - mid <= 32)
-			std::sort(a.begin() + mid + 1, a.begin() + right + 1);
-		else
-			merge_insert_sort_d(a, mid + 1, right);
-		std::inplace_merge(
-			a.begin() + left, a.begin() + mid + 1, a.begin() + right + 1);
+		{
+			*iter = *right_iter;
+			right_iter++;
+		}
+		iter++;
+	}
+	while (left_iter != left.end())
+	{
+		*iter = *left_iter;
+		left_iter++;
+		iter++;
+	}
+	while (right_iter != right.end())
+	{
+		*iter = *right_iter;
+		right_iter++;
+		iter++;
 	}
 }
 
-void	PmergeMe::merge_insert_sort_v(std::vector<int>& a, int left, int right)
+void	PmergeMe::merge_insert_sort_v(std::vector<int>& v)
 {
-	if (left < right)
+	if (v.size() == 1)
+		return ;
+
+	std::vector<int>::iterator middle = v.begin() + (v.size() / 2);
+	std::vector<int> left(v.begin(), middle);
+	std::vector<int> right(middle, v.end());
+
+	merge_insert_sort_v(left);
+	merge_insert_sort_v(right);
+
+	std::vector<int>::iterator left_iter = left.begin();
+	std::vector<int>::iterator right_iter = right.begin();
+	std::vector<int>::iterator iter = v.begin();
+
+	while (left_iter != left.end() && right_iter != right.end())
 	{
-		int	mid = left + (right - left) / 2;
-		if (mid - left + 1 <= 32)
-			std::sort(a.begin() + left, a.begin() + mid + 1);
+		if (*left_iter <= *right_iter)
+		{
+			*iter = *left_iter;
+			left_iter++;
+		}
 		else
-			merge_insert_sort_v(a, left, mid);
-		if (right - mid <= 32)
-			std::sort(a.begin() + mid + 1, a.begin() + right + 1);
-		else
-			merge_insert_sort_v(a, mid + 1, right);
-		std::inplace_merge(
-			a.begin() + left, a.begin() + mid + 1, a.begin() + right + 1);
+		{
+			*iter = *right_iter;
+			right_iter++;
+		}
+		iter++;
+	}
+	while (left_iter != left.end())
+	{
+		*iter = *left_iter;
+		left_iter++;
+		iter++;
+	}
+	while (right_iter != right.end())
+	{
+		*iter = *right_iter;
+		right_iter++;
+		iter++;
 	}
 }
 
@@ -60,13 +112,14 @@ PmergeMe::PmergeMe(char **av)
 	{
 		if (av[i][0] == '-')
 		{
-			std::cout << RED << "Error: argument have a none positive number."
-			<< RESET;
+			std::cout << RED << "Error: not a positive number." << RESET;
 			_deque.clear();
 			_vector.clear();
 			return ;
 		}
+
 		int	j = 0;
+
 		if (av[i][0] == '+')
 			j++;
 		for (; av[i][j]; j++)
@@ -105,7 +158,12 @@ void	PmergeMe::sort(void)
 {
 	if (_deque.empty())
 		return ;
-	int	i;
+
+	// Var
+	int		i;
+	double	deque_time;
+	double	vector_time;
+	clock_t	start;
 
 	// Line 1
 	std::cout << BLUE << "Before:";
@@ -119,13 +177,12 @@ void	PmergeMe::sort(void)
 		std::cout << std::endl;
 
 	// Sort
-	clock_t start;
 	start = clock();
-	merge_insert_sort_d(_deque, 0, _deque.size() - 1);
-	double deque_time = double(clock() - start) / double(CLOCKS_PER_SEC);
+	merge_insert_sort_d(_deque);
+	deque_time = double(clock() - start) / double(CLOCKS_PER_SEC);
 	start = clock();
-	merge_insert_sort_v(_vector, 0, _vector.size() - 1);
-	double vector_time = double(clock() - start) / double(CLOCKS_PER_SEC);
+	merge_insert_sort_v(_vector);
+	vector_time = double(clock() - start) / double(CLOCKS_PER_SEC);
 
 	// Line 2
 	std::cout << "After :";

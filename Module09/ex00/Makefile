@@ -35,10 +35,6 @@ re:fclean
 
 run:${NAME}
 	clear
-	./${NAME} file/input.txt
-
-debug:${NAME}
-	clear
 	valgrind ./${NAME} file/input.txt
 
 ${OBJ_PATH}%.o:${SRC_PATH}%.cpp
@@ -50,6 +46,6 @@ ${OBJ_DIRS}:
 ${NAME}:${OBJ_DIRS} ${OBJ}
 	${CPP} ${OBJ} -o $@
 
-.PHONY:all clean fclean re run debug
+.PHONY:all clean fclean re run
 
 -include ${DEPS}

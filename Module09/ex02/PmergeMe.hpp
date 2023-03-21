@@ -19,7 +19,7 @@
 #include <deque>
 #include <vector>
 
-#define RESET	"\033[0m" << std::endl;
+#define RESET	"\033[0m" << std::endl
 #define RED		"\033[31m"
 #define BLUE	"\033[34m"
 
@@ -29,8 +29,8 @@ class PmergeMe
 		std::deque<int>		_deque;
 		std::vector<int>	_vector;
 
-		void	merge_insert_sort_d(std::deque<int>& a, int left, int right);
-		void	merge_insert_sort_v(std::vector<int>& a, int left, int right);
+		void	merge_insert_sort_d(std::deque<int>& d);
+		void	merge_insert_sort_v(std::vector<int>& v);
 	public:
 		PmergeMe(void);
 		PmergeMe(char **av);

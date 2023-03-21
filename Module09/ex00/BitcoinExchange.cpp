@@ -15,6 +15,7 @@
 BitcoinExchange::BitcoinExchange(void)
 {
 	std::ifstream	infile("file/data.csv");
+
 	if (infile.is_open() == false)
 	{
 		std::cout << "data.csv not found." << std::endl;
@@ -22,6 +23,7 @@ BitcoinExchange::BitcoinExchange(void)
 	}
 
 	char	str[20];
+
 	infile.getline(str, 20);
 	while (infile.getline(str, 20))
 	{
@@ -46,20 +48,24 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-double	BitcoinExchange::   getData(std::string const &str) const
+double	BitcoinExchange::getData(std::string const &str) const
 {
-	std::map<std::string,double>::const_iterator	it = _data.find(str);
+	std::map<std::string,double>::const_iterator	it;
+	
+	it = _data.find(str);
 	if (it != _data.end())
 		return (_data.at(str));
+
 	std::string	tmp(str);
 	char		day[3] = {str[8], str[9], '\0'};
 	int			i = atoi(day);
+
 	if (i > 1)
 	{
-		i--;
+		i -= 1;
 		tmp[8] = (i / 10) + '0';
 		tmp[9] = (i % 10) + '0';
-		std::map<std::string,double>::const_iterator	it = _data.find(tmp);
+		it = _data.find(tmp);
 		if (it != _data.end())
 			return (_data.at(tmp));
 	}
@@ -69,9 +75,11 @@ double	BitcoinExchange::   getData(std::string const &str) const
 		i -= 2;
 		tmp[8] = (i / 10) + '0';
 		tmp[9] = (i % 10) + '0';
-		std::map<std::string,double>::const_iterator	it = _data.find(tmp);
+		it = _data.find(tmp);
 		if (it != _data.end())
 			return (_data.at(tmp));
 	}
-	return (0.0);
+	if (str < _data.begin()->first)
+		return (0.0);
+	return (_data.rbegin()->second);
 }
